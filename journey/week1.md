@@ -7,6 +7,8 @@
 ## What is Monte Carlos Simulation
 Monte Carlo Simulation is a mathematical technique used to estimate the possible outcomes of an uncertain event by modeling the probability of different outcomes using random sampling. It acts like a way to look into the future to make better business, investment, and planning decisions.
 
+A Monte Carlo simulation will work under virtually any probability distribution, as long as the distribution satisfies one fundamental mathematical condition: it must have a finite expected value (mean)
+
 ### Who uses it
 It is widely applied in portfolio management, investment planning, risk analysis, option pricing, and capacity planning. It is also used across diverse fields such as medicine, astrophysics, and even solving Wordle puzzles
 
@@ -29,7 +31,7 @@ The fundamental difference is that Monte Carlo Simulation (MCS) is a statistical
 | How it Works | Runs thousands of random trials to generate a statistical distribution. | Iteratively updates a decision path by running random "rollouts" from specific nodes. |
 | Primary Use Cases | Finance (portfolio risk), physics, engineering, project management. | Artificial Intelligence, turn-based games (Go, Chess, Big Two), robotics. |
 
-The reason Monte Carlo Simulation (MCS) is superior to Monte Carlo Tree Search (MCTS) for Big 2 card combination arrangement is because hand organization is fundamentally a portfolio combination problem. It is a one-time macro allocation and forecasting problem. At the moment of arranging your initial 13 cards, you are not engaging in a turn-based, competitive game with a sequential chain of reactive player choices; you are simply optimizing your resources before the match begins.
+The reason Monte Carlo Simulation (MCS) is superior to Monte Carlo Tree Search (MCTS) for Big 2 card combination arrangement is because hand organization is fundamentally a portfolio combination problem. It is a one-time macro allocation and forecasting problem. At the moment of arranging your initial 13 cards, you are not engaging in a turn-based, competitive game with a sequential chain of reactive player choices; you are simply optimizing your resources before the match begins.[3]
 
 
 ## Takeaway
@@ -45,4 +47,4 @@ Instead of trying to solve the problem with an impossible, single calculation, t
 ## Reference
 - [What is Monte Carlos Simulation](https://www.youtube.com/watch?v=7TqhmX92P6U)
 - [Monte Carlo Tree Search (MCTS)](https://www.youtube.com/watch?v=2Hv4b0vC7YY)
-- [Monte Carlos Statstics skills](https://www.youtube.com/watch?v=r7cn3WS5x9c)
+- [3][Monte Carlos Statstics skills](https://www.youtube.com/watch?v=r7cn3WS5x9c)
