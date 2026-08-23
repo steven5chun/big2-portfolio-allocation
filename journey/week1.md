@@ -5,7 +5,7 @@
 - The Monte Carlo Method: Exploring how the Monte Carlo simulation method can be applied to model game outcomes and determine strategy.
 
 ## What is Monte Carlos Simulation
-Monte Carlo Simulation is a mathematical technique used to estimate the possible outcomes of an uncertain event by modeling the probability of different outcomes using random sampling. It acts like a way to look into the future to make better business, investment, and planning decisions. [1] [[1](https://www.youtube.com/watch?v=7TqhmX92P6U)]
+Monte Carlo Simulation is a mathematical technique used to estimate the possible outcomes of an uncertain event by modeling the probability of different outcomes using random sampling. It acts like a way to look into the future to make better business, investment, and planning decisions. [[1](https://www.youtube.com/watch?v=7TqhmX92P6U)]
 
 A Monte Carlo simulation will work under virtually any probability distribution, as long as the distribution satisfies one fundamental mathematical condition: it must have a finite expected value (mean). [[3](https://www.youtube.com/watch?v=r7cn3WS5x9c)]
 
