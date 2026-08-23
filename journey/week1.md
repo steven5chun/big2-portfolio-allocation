@@ -6,7 +6,7 @@
 
 ## Big 2 mathematic calculation
 
-There are 635,013,559,600 total unique starting hands. [1](https://github.com/BobSwagg13/Application-of-Combinatorics-in-Big-Two/blob/main/docs/Application%20of%20Combinatorics%20in%20Big%20Two.pdf) Using foundational discrete math principles like permutations and combinations (nCr), the paper investigates the mathematical probability of a player forming legal game groupings, including singles, pairs, triples, and five-card poker combinations (such as straights, flushes, and full houses).
+There are 635,013,559,600 total unique starting hands. [[1](https://github.com/BobSwagg13/Application-of-Combinatorics-in-Big-Two/blob/main/docs/Application%20of%20Combinatorics%20in%20Big%20Two.pdf)] Using foundational discrete math principles like permutations and combinations (nCr), the paper investigates the mathematical probability of a player forming legal game groupings, including singles, pairs, triples, and five-card poker combinations (such as straights, flushes, and full houses).
 
 - Singles (1 card)
 - Pairs (2 cards of matching rank)
