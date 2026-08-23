@@ -32,8 +32,15 @@ The fundamental difference is that Monte Carlo Simulation (MCS) is a statistical
 
 
 ## Takeaway
-Monte Carlos Simulation need 
+
+A perfect cultural analogy for this methodology can be found in the Marvel film Avengers: Infinity War. To find a way to defeat Thanos, Doctor Strange runs 14,000,605 simulations of parallel futures in real-time, discovering exactly one winning path.
+
+This sequence is a cinematic representation of a ***Monte Carlo Simulation***.
+
+When faced with complex, real-world problems like Big 2 strategy or financial portfolio management, traditional, static mathematical formulas break down completely. The system simply contains too many combinations, exponential possibilities, and imperfect information (unseen cards or hidden market forces).
+
+Instead of trying to solve the problem with an impossible, single calculation, the Monte Carlo method embraces the chaos. By rapidly simulating thousands of randomized, parallel scenarios, it uncovers the underlying probability distribution of the entire system. Learning this method taught me that when a system is too volatile to predict, running extensive parallel simulations is the single most powerful tool we have to navigate uncertainty and find our "one winning path."
 
 ## Reference
-[What is Monte Carlos Simulation](https://www.youtube.com/watch?v=7TqhmX92P6U)
-[Monte Carlo Tree Search (MCTS)](https://www.youtube.com/watch?v=2Hv4b0vC7YY)
+- [What is Monte Carlos Simulation](https://www.youtube.com/watch?v=7TqhmX92P6U)
+- [Monte Carlo Tree Search (MCTS)](https://www.youtube.com/watch?v=2Hv4b0vC7YY)
