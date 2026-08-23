@@ -4,23 +4,38 @@
 - Probability Calculations: Using mathematical formulas to calculate the probability of specific card distributions and identifying impossible combinations.
 - The Monte Carlo Method: Exploring how the Monte Carlo simulation method can be applied to model game outcomes and determine strategy.
 
-## What is Monte Carlos Simulation
-Monte Carlo Simulation is a mathematical technique used to estimate the possible outcomes of an uncertain event by modeling the probability of different outcomes using random sampling. It acts like a way to look into the future to make better business, investment, and planning decisions. [[1](https://www.youtube.com/watch?v=7TqhmX92P6U)]
+## Big 2 mathematic calculation
 
-A Monte Carlo simulation will work under virtually any probability distribution, as long as the distribution satisfies one fundamental mathematical condition: it must have a finite expected value (mean). [[3](https://www.youtube.com/watch?v=r7cn3WS5x9c)]
+There are 635,013,559,600 total unique starting hands. [1](https://github.com/BobSwagg13/Application-of-Combinatorics-in-Big-Two/blob/main/docs/Application%20of%20Combinatorics%20in%20Big%20Two.pdf) Using foundational discrete math principles like permutations and combinations (nCr), the paper investigates the mathematical probability of a player forming legal game groupings, including singles, pairs, triples, and five-card poker combinations (such as straights, flushes, and full houses).
+
+- Singles (1 card)
+- Pairs (2 cards of matching rank)
+- Triples (3 cards of matching rank)
+- Five-card poker hands (Straights, Flushes, Full Houses, Four-of-a-Kind, and Straight Flushes)
+
+
+## What is Monte Carlos Simulation
+
+Monte Carlo Simulation is a mathematical technique used to estimate the possible outcomes of an uncertain event by modeling the probability of different outcomes using random sampling. It acts like a way to look into the future to make better business, investment, and planning decisions. [[2](https://www.youtube.com/watch?v=7TqhmX92P6U)]
+
+A Monte Carlo simulation will work under virtually any probability distribution, as long as the distribution satisfies one fundamental mathematical condition: it must have a finite expected value (mean). [[4](https://www.youtube.com/watch?v=r7cn3WS5x9c)]
 
 ### Who uses it
+
 It is widely applied in portfolio management, investment planning, risk analysis, option pricing, and capacity planning. It is also used across diverse fields such as medicine, astrophysics, and even solving Wordle puzzles
 
 ### Accuracy
+
 Running the simulation repeatedly provides standard deviation and variance metrics, ensuring that the more you sample, the more accurate your future estimation becomes
 
 ### The 3 Core Steps to Run a Simulation
+
 1. ***Set up the predictive model:*** Identify the dependent variable you want to predict and the independent variables (input risks or predictive factors) that will drive those predictions
 2. ***Specify the probability distribution:*** Define a range of likely values and assign probability weights for the independent variables using historical data or subjective expert judgment.
 3. ***Run simulations repeatedly:*** Generate random values for the independent variables repeatedly until you gather a large enough sample size to represent the near-infinite combinations of outcomes
 
 ## Different between Monte Carlos Tree Search (MCTS) and Monte Carlos Simulation (MCS)
+
 The fundamental difference is that Monte Carlo Simulation (MCS) is a statistical tool used to calculate static probabilities and risk, while Monte Carlo Tree Search (MCTS) is an AI search algorithm designed to make optimal sequential choices.
 
 | Feature | Monte Carlo Simulation (MCS) | Monte Carlo Tree Search (MCTS) |
@@ -45,6 +60,7 @@ When faced with complex, real-world problems like Big 2 strategy or financial po
 Instead of trying to solve the problem with an impossible, single calculation, the Monte Carlo method embraces the chaos. By rapidly simulating thousands of randomized, parallel scenarios, it uncovers the underlying probability distribution of the entire system. Learning this method taught me that when a system is too volatile to predict, running extensive parallel simulations is the single most powerful tool we have to navigate uncertainty and find our "one winning path."
 
 ## Reference
-- [1] [What is Monte Carlos Simulation](https://www.youtube.com/watch?v=7TqhmX92P6U)
-- [2] [Monte Carlo Tree Search (MCTS)](https://www.youtube.com/watch?v=2Hv4b0vC7YY)
-- [3] [Monte Carlos Statstics skills](https://www.youtube.com/watch?v=r7cn3WS5x9c)
+- [1] [Big 2 mathematical formula calculation](https://github.com/BobSwagg13/Application-of-Combinatorics-in-Big-Two/blob/main/docs/Application%20of%20Combinatorics%20in%20Big%20Two.pdf)
+- [2] [What is Monte Carlos Simulation](https://www.youtube.com/watch?v=7TqhmX92P6U)
+- [3] [Monte Carlo Tree Search (MCTS)](https://www.youtube.com/watch?v=2Hv4b0vC7YY)
+- [4] [Monte Carlos Statstics skills](https://www.youtube.com/watch?v=r7cn3WS5x9c)
