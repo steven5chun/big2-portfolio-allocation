@@ -21,12 +21,12 @@ Running the simulation repeatedly provides standard deviation and variance metri
 ## Different between Monte Carlos Tree Search (MCTS) and Monte Carlos Simulation (MCS)
 The fundamental difference is that Monte Carlo Simulation (MCS) is a statistical tool used to calculate static probabilities and risk, while Monte Carlo Tree Search (MCTS) is an AI search algorithm designed to make optimal sequential choices.
 
-Feature | Monte Carlo Simulation (MCS) | Monte Carlo Tree Search (MCTS)
-Primary Goal | Forecast overall risk, outcomes, or values. | Find the single best next move or decision.
-Structure | Flat / ***No Structure***. Evaluates completely independent random samples. | ***Tree Structure.*** Dynamically builds a memory tree of moves and game states.
-Decision Logic | Passive sampling. Samples randomly from fixed probability distributions. | Active learning. Uses formulas (like UCT) to balance exploration and exploitation.
-How it Works | Runs thousands of random trials to generate a statistical distribution. | Iteratively updates a decision path by running random "rollouts" from specific nodes.
-Primary Use Cases | Finance (portfolio risk), physics, engineering, project management. | Artificial Intelligence, turn-based games (Go, Chess, Big Two), robotics.
+| Feature | Monte Carlo Simulation (MCS) | Monte Carlo Tree Search (MCTS)
+| Primary Goal | Forecast overall risk, outcomes, or values. | Find the single best next move or decision.
+| Structure | Flat / ***No Structure***. Evaluates completely independent random samples. | ***Tree Structure.*** Dynamically builds a memory tree of moves and game states.
+| Decision Logic | Passive sampling. Samples randomly from fixed probability distributions. | Active learning. Uses formulas (like UCT) to balance exploration and exploitation.
+| How it Works | Runs thousands of random trials to generate a statistical distribution. | Iteratively updates a decision path by running random "rollouts" from specific nodes.
+| Primary Use Cases | Finance (portfolio risk), physics, engineering, project management. | Artificial Intelligence, turn-based games (Go, Chess, Big Two), robotics.
 
 ## Takeaway
 Monte Carlos Simulation need 
