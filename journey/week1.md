@@ -31,7 +31,7 @@ The fundamental difference is that Monte Carlo Simulation (MCS) is a statistical
 | How it Works | Runs thousands of random trials to generate a statistical distribution. | Iteratively updates a decision path by running random "rollouts" from specific nodes. |
 | Primary Use Cases | Finance (portfolio risk), physics, engineering, project management. | Artificial Intelligence, turn-based games (Go, Chess, Big Two), robotics. |
 
-The reason Monte Carlo Simulation (MCS) is superior to Monte Carlo Tree Search (MCTS) for Big 2 card combination arrangement is because hand organization is fundamentally a portfolio combination problem. It is a one-time macro allocation and forecasting problem. At the moment of arranging your initial 13 cards, you are not engaging in a turn-based, competitive game with a sequential chain of reactive player choices; you are simply optimizing your resources before the match begins.[3]
+The reason Monte Carlo Simulation (MCS) is superior to Monte Carlo Tree Search (MCTS) for Big 2 card combination arrangement is because hand organization is fundamentally a portfolio combination problem. It is a one-time macro allocation and forecasting problem. At the moment of arranging your initial 13 cards, you are not engaging in a turn-based, competitive game with a sequential chain of reactive player choices; you are simply optimizing your resources before the match begins.[3](https://www.youtube.com/watch?v=r7cn3WS5x9c)
 
 
 ## Takeaway
@@ -45,6 +45,6 @@ When faced with complex, real-world problems like Big 2 strategy or financial po
 Instead of trying to solve the problem with an impossible, single calculation, the Monte Carlo method embraces the chaos. By rapidly simulating thousands of randomized, parallel scenarios, it uncovers the underlying probability distribution of the entire system. Learning this method taught me that when a system is too volatile to predict, running extensive parallel simulations is the single most powerful tool we have to navigate uncertainty and find our "one winning path."
 
 ## Reference
-- [What is Monte Carlos Simulation](https://www.youtube.com/watch?v=7TqhmX92P6U)
-- [Monte Carlo Tree Search (MCTS)](https://www.youtube.com/watch?v=2Hv4b0vC7YY)
-- [3][Monte Carlos Statstics skills](https://www.youtube.com/watch?v=r7cn3WS5x9c)
+- [1] [What is Monte Carlos Simulation](https://www.youtube.com/watch?v=7TqhmX92P6U)
+- [2] [Monte Carlo Tree Search (MCTS)](https://www.youtube.com/watch?v=2Hv4b0vC7YY)
+- [3] [Monte Carlos Statstics skills](https://www.youtube.com/watch?v=r7cn3WS5x9c)
