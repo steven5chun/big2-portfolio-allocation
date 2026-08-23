@@ -6,16 +6,19 @@ Driven by a desire to master foundational quantitative finance concepts, I built
 
 ## The Learning Journey & System Realizations
 1. ***Breaking the Code Barrier via "Vibe Coding":***
+
    I started this project with zero programming experience. By leveraging GitHub open-source repositories for basic game rules and relying on AI-assisted "Vibe Coding," I stitched together a high-performance simulation script. The journey was to learn core software architecture, data structures, and debugging through direct, iterative execution.
 
-2. ***The Core Realization: Hand Arrangements = Asset Allocation***
+3. ***The Core Realization: Hand Arrangements = Asset Allocation***
+
    The breakthrough moment of the project was realizing that arranging a 13-card hand is functionally identical to constructing a stock portfolio.The Strategic Dilemma: Should I split my cards into a high-risk 5-card Straight and weak singles, or partition them into stable pairs and high-ranking control cards?The Financial Equivalent: This maps perfectly to the Efficient Frontier in Modern Portfolio Theory (MPT). I learned how to balance aggressive, high-yield combinations against low-volatility preservation assets (like Aces and Twos) to maximize my structural "Sharpe Ratio" before the game even begins.3. Simulating Volatility & System DynamicsI quickly discovered that static formulas are not enough. Big 2, like Wall Street, is a highly volatile, dynamic system where an individual's success depends heavily on the unpredictable, non-linear actions of other players. By running 10,000 rapid Monte Carlo rollouts, I learned how to model hidden variables (opponents' unseen cards) and simulate how macro factor shocks impact a fixed strategy over time.
 
 2. The Core Realization: Hand Arrangements = Asset AllocationThe breakthrough moment of the project was realizing that arranging a 13-card hand is functionally identical to constructing a stock portfolio.The Strategic Dilemma: Should I split my cards into a high-risk 5-card Straight and weak singles, or partition them into stable pairs and high-ranking control cards?The Financial Equivalent: This maps perfectly to the Efficient Frontier in Modern Portfolio Theory (MPT). I learned how to balance aggressive, high-yield combinations against low-volatility preservation assets (like Aces and Twos) to maximize my structural "Sharpe Ratio" before the game even begins.3. Simulating Volatility & System DynamicsI quickly discovered that static formulas are not enough. Big 2, like Wall Street, is a highly volatile, dynamic system where an individual's success depends heavily on the unpredictable, non-linear actions of other players. By running 10,000 rapid Monte Carlo rollouts, I learned how to model hidden variables (opponents' unseen cards) and simulate how macro factor shocks impact a fixed strategy over time.
 
 
 ## Core Takeaway
-This project did not yield a perfect, unbeatable card algorithm—because in systems dominated by human behavior, a perfect formula does not exist.The true value is the mastery of the methodology. I transitioned from a non-programmer to an analytical systems-thinker, proving that complex financial engineering concepts can be mastered by analyzing the rule-bound systems we interact with every day.
+This project did not yield a perfect, unbeatable card algorithm—because in systems dominated by human behavior, a perfect formula does not exist.
+The true value is the mastery of the methodology. I transitioned from a non-programmer to an analytical systems-thinker, proving that complex financial engineering concepts can be mastered by analyzing the rule-bound systems we interact with every day.
 
 ## Background
 Big 2 (鋤大D) is a popular Asian card game for four players. The goal is to play all your cards first. Players use single cards, pairs, or five-card hands like poker. The player with the 3 of diamonds goes first. The 2 is the highest card, and diamonds are the lowest suit.where the number 2 holds the highest value. 
