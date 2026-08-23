@@ -45,3 +45,4 @@ Instead of trying to solve the problem with an impossible, single calculation, t
 ## Reference
 - [What is Monte Carlos Simulation](https://www.youtube.com/watch?v=7TqhmX92P6U)
 - [Monte Carlo Tree Search (MCTS)](https://www.youtube.com/watch?v=2Hv4b0vC7YY)
+- [Monte Carlos Statstics skills](https://www.youtube.com/watch?v=r7cn3WS5x9c)
