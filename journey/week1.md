@@ -7,7 +7,7 @@
 ## What is Monte Carlos Simulation
 Monte Carlo Simulation is a mathematical technique used to estimate the possible outcomes of an uncertain event by modeling the probability of different outcomes using random sampling. It acts like a way to look into the future to make better business, investment, and planning decisions.
 
-A Monte Carlo simulation will work under virtually any probability distribution, as long as the distribution satisfies one fundamental mathematical condition: it must have a finite expected value (mean). [3](https://www.youtube.com/watch?v=r7cn3WS5x9c)
+A Monte Carlo simulation will work under virtually any probability distribution, as long as the distribution satisfies one fundamental mathematical condition: it must have a finite expected value (mean). [[3](https://www.youtube.com/watch?v=r7cn3WS5x9c)]
 
 ### Who uses it
 It is widely applied in portfolio management, investment planning, risk analysis, option pricing, and capacity planning. It is also used across diverse fields such as medicine, astrophysics, and even solving Wordle puzzles
