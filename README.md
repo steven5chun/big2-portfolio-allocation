@@ -45,6 +45,11 @@ This project aims to discover the optimal strategy for various in-game situation
 - Probability Calculations: Using mathematical formulas to calculate the probability of specific card distributions and identifying impossible combinations.
 - Understand the Monte Carlo simulation Method: Exploring how the Monte Carlo simulation method can be applied to model game outcomes and determine strategy.
 
+[Week 2](./journey/week2.md)
+- Learn Python
+- Write Simple Python code
+- Study Big2 Monte Carlos Python code to find out possibility of different combination of big 2 cards
+
 ## References
 
 - [Big 2 Wiki](https://en.wikipedia.org/wiki/Big_two)
