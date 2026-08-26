@@ -25,7 +25,7 @@ Driven by a desire to master foundational quantitative finance concepts, I built
 This project did not yield a perfect, unbeatable card algorithm—because in systems dominated by human behavior, a perfect formula does not exist.
 The true value is the mastery of the methodology. I transitioned from a non-programmer to an analytical systems-thinker, proving that complex financial engineering concepts can be mastered by analyzing the rule-bound systems we interact with every day.
 
-I quickly discovered that static formulas are not enough. Big 2, like Wall Street, is a highly volatile, dynamic system where an individual's success depends heavily on the unpredictable, non-linear actions of other players. By running 10,000 rapid Monte Carlo rollouts, I learned how to model hidden variables (opponents' unseen cards) and simulate how macro factor shocks impact a fixed strategy over time.
+I quickly discovered that static formulas are not enough. Big 2, like Wall Street, is a highly volatile, dynamic system where an individual's success depends heavily on the unpredictable, non-linear actions of other players. 
 
 ## Background
 
