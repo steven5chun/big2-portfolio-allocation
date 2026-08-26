@@ -67,6 +67,8 @@ It runs 1,000,000 iterations, dealing random 13-card hands and checking for the 
 - Four of a kind — Four cards of the same rank (e.g., A♥ A♠ A♦ A♣)
 - Straight flush — Five consecutive cards all of the same suit (e.g., 4♣ 5♣ 6♣ 7♣ 8♣) — the rarest hand
 
+source code refer to [capsa.py](../code/combination-probabilities/capsa.py) and [monte_carlo_simulation.py](../code/combination-probabilities//monte_carlo_simulation.py)
+
 ## Takeaway 
 
 This week covered Python installation, basic numerical calculations, and data visualization. Furthermore, I implemented a Monte Carlo method to experimentally determine the mathematical probability of drawing specific Big 2 card combinations, such as pairs, three of a kind, straight etc.. By mapping custom game rules into Python code, I successfully modeled individual cards and hand structures. Acquiring these fundamental data science skills provides a strong foundation for developing a comprehensive Big 2 analytics portfolio project in the future.
