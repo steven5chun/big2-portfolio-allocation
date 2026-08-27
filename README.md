@@ -48,6 +48,11 @@ This project aims to discover the optimal strategy for various in-game situation
 - Write Simple Python code
 - Study Big2 Monte Carlos Python code to find out possibility of different combination of big 2 cards
 
+[Week 3](./journey/week3.md)
+- Learn Vibe coding
+- Setup AI coding tools
+- Use Vibe coding to run simple game
+
 ## References
 
 - [Big 2 Wiki](https://en.wikipedia.org/wiki/Big_two)
