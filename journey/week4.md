@@ -1,11 +1,5 @@
 # Week 4
 
-## Vibe code  
-- Based on big 2 game rule, generate cards combinations (or partitions)
-- Design big 2 game engine
-- monte carlos simulation for each combination
-- output result
-
 ## Big 2 Cards Combinations (or partitions)
 
 Cards are tuples: `(value, suit)`

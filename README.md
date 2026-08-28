@@ -51,7 +51,13 @@ This project aims to discover the optimal strategy for various in-game situation
 [Week 3](./journey/week3.md)
 - Learn Vibe coding
 - Setup AI coding tools
-- Use Vibe coding to run simple game
+- Use Vibe coding to write simple game
+
+[Week 4](./journey/week4.md)
+- Based on big 2 game rule, generate cards combinations (or partitions)
+- Design big 2 game engine
+- Run monte carlos simulation to find out best cards cardscombination
+- analysis the results
 
 ## References
 
