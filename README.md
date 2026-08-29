@@ -59,6 +59,12 @@ This project aims to discover the optimal strategy for various in-game situation
 - Run monte carlos simulation to find out best cards cardscombination
 - analysis the results
 
+[Week 5](./journey/week5.md)
+- Financial Theories on Portfolio
+- What is finanicla term: Modern Portfolio Theory, Variance & Volatility, Risk, Sharp Ratio
+- Translating Financial Metrics to Big 2 Allocation
+- Example of using monte carlos simulation for stock allocation  
+
 ## References
 
 - [Big 2 Wiki](https://en.wikipedia.org/wiki/Big_two)
