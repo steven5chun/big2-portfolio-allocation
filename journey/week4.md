@@ -30,6 +30,18 @@ code reference:
 - [game_rule.py](../code/monte-carlos-analysis/game_rule.py)
 - [patition_finder.py](../code/monte-carlos-analysis/partition_finder.py)
 
+## The design of Monte Carlo simulation for Big 2 
+
+The primary goal is to utilize a Monte Carlo simulation framework to evaluate starting hand combinations in Big 2 and determine optimal card arrangement strategies to maximize win probability.
+
+Monte carlos simulation rely on the simulation environment. In a real-world scenario, simulating every possible variable of a Big 2 game is computationally prohibitive due to imperfect information, vast card permutations, and diverse player behaviors. To ensure a feasible and optimized computing workload, this simulation isolates key impactful variables while standardizing or fixing environmental factors to simplify the game.
+
+***Key Simulation Assumptions & Constraints:***
+
+- Homogeneous Player Strategy: To eliminate variance caused by psychological gameplay, all players operate under an identical heuristic algorithm. The baseline strategy prioritizes playing lower-value cards first, grouping valid combinations efficiently, reserving high-value cards (2s) to maintain round control, and aggressively rushing to empty the hand when close to victory.
+- Optimized Hand Size: The card count per player is structurally scaled down from 13 cards to 8 cards. This constraint drastically reduces the computational overhead and processing time per iteration while preserving core game mechanics.
+- Deterministic vs. Stochastic Setup: The primary player's 8-card hand remains fixed across a single simulation batch. To accurately evaluate the baseline win expectancy of that specific hand, the remaining deck is stochastically and randomly distributed among the opponents over thousands of iterative runs.
+
 
 ## Big 2 game engine
 
