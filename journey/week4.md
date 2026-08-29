@@ -39,7 +39,9 @@ Monte carlos simulation rely on the simulation environment. In a real-world scen
 ***Key Simulation Assumptions & Constraints:***
 
 - Homogeneous Player Strategy: To eliminate variance caused by psychological gameplay, all players operate under an identical heuristic algorithm. The baseline strategy prioritizes playing lower-value cards first, grouping valid combinations efficiently, reserving high-value cards (2s) to maintain round control, and aggressively rushing to empty the hand when close to victory.
+  
 - Optimized Hand Size: The card count per player is structurally scaled down from 13 cards to 8 cards. This constraint drastically reduces the computational overhead and processing time per iteration while preserving core game mechanics.
+
 - Deterministic vs. Stochastic Setup: The primary player's 8-card hand remains fixed across a single simulation batch. To accurately evaluate the baseline win expectancy of that specific hand, the remaining deck is stochastically and randomly distributed among the opponents over thousands of iterative runs.
 
 
