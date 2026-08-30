@@ -2,7 +2,7 @@
 
 ## Overview
 
-SmartAI is the default opponent in Big 2 simulations. It is a **scoring-based AI** that evaluates every valid move and picks the one with the **lowest score**.
+SmartAI is the core AI engine in Big 2 simulations. It is a **scoring-based AI** that evaluates every valid move and picks the one with the **lowest score**.
 
 ### Core Principle
 
@@ -14,19 +14,25 @@ SmartAI is the default opponent in Big 2 simulations. It is a **scoring-based AI
 
 ---
 
-## Two Decision Modes
+## Decision Modes
 
-### 1. Leading (`_choose_lead`)
-When there is no current play to beat, SmartAI decides what to lead.
+### 1. Free Mode (`choose_move`)
+When there is no partition constraint, SmartAI evaluates all valid moves freely.
 
-### 2. Beating (`_choose_beat`)
-When an opponent has played, SmartAI must find a move that beats it.
+### 2. Constrained Mode (`choose_move_constrained`)
+When a player has a partition strategy:
+1. **3d override** — On the first round, if the player holds `3d`, always play `SINGLE(3d)` first (game rule)
+2. **Leading** (no current play to beat) — Play the first combo from the remaining partition
+3. **Beating** (must match a play) — Scan ALL remaining partition combos, find valid ones, use SmartAI scoring to pick the best
+4. If no valid partition combo exists → pass
+
+When a partition combo is played, it is removed from the remaining list (not just advanced past), so unplayed combos stay available.
 
 ---
 
 ## Lead Scoring
 
-When leading, each valid move gets a score based on these factors:
+When leading (no current play to beat), each valid move gets a score based on these factors:
 
 | Factor | Formula | Purpose |
 |--------|---------|---------|
@@ -142,6 +148,22 @@ Valid moves: `PAIR(8d, 8c)`, `PAIR(jh, jc)`
 
 ---
 
+## Partition Strategy vs SmartAI Strategy
+
+These are two separate concepts:
+
+| Concept | What It Does |
+|---------|-------------|
+| **Partition strategy** | Groups your cards into plays (e.g., pairs first, then singles). Determines *ordering and grouping* of your hand. |
+| **SmartAI strategy** | On your turn, evaluates valid moves and picks the best one. Determines *which specific play* to make right now. |
+
+In simulations, all 4 players use **both**:
+1. Each player gets a partition (how to group their cards)
+2. Each player uses SmartAI to decide what to play, with their partition combo taking priority
+3. If the partition combo isn't a valid move, SmartAI picks the best fallback
+
+---
+
 ## Comparison with RandomAI
 
 | Feature | SmartAI | RandomAI |
@@ -154,16 +176,26 @@ Valid moves: `PAIR(8d, 8c)`, `PAIR(jh, jc)`
 
 ## How to Use
 
-SmartAI is the default opponent in `sim_play.py`:
+All 4 players use SmartAI with constrained partitions in `sim_play.py`:
 
 ```python
 from big2_ai import SmartAI
-ai_players = [SmartAI() for _ in range(3)]
+
+# Each player gets a partition
+all_partitions = [your_partition, ai1_partition, ai2_partition, ai3_partition]
+ai_players = [SmartAI() for _ in range(4)]
+
+winner, cards_left = game.simulate_with_partition(all_partitions, ai_players)
 ```
 
-To use RandomAI instead:
+To use free SmartAI mode (no partition constraint):
 
 ```python
-from big2_ai import RandomAI
-ai_players = [RandomAI() for _ in range(3)]
+play = ai.choose_move(hand, current_play, is_first_round, game)
+```
+
+To use constrained SmartAI mode:
+
+```python
+play = ai.choose_move_constrained(hand, current_play, is_first_round, partition_play, game)
 ```

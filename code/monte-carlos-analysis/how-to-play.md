@@ -1,4 +1,4 @@
-# Big 2 Game Play - Monte Carlos Convergence Analysis
+# Big 2 Game Play - Monte Carlo Convergence Analysis
 
 ## What This Does
 
@@ -36,7 +36,7 @@ python sim_play.py
 
 This will:
 1. Find all valid partitions for the configured hand
-2. Run 3,000 simulations per partition against 3 Smart AI opponents
+2. Run 3,000 simulations per partition against 3 AI opponents
 3. Print a progress table with win rates and ETA
 4. Display top partitions with metrics at each milestone
 5. Generate 3 graphs and a CSV in the `results/` folder
@@ -46,8 +46,8 @@ This will:
 Edit the **CONFIG section** at the top of `sim_play.py`:
 
 ```python
-PLAYER_HAND = [('3', 'd'), ('5', 'h'), ('5', 'c'), ('7', 's'), ('k', 's')]
-OPP_CARDS = 5
+PLAYER_HAND = [('3', 'd'), ('5', 'h'), ('5', 'c'), ('7', 's'), ('k', 's'), ('8', 'd'), ('8', 'c'), ('8', 'h')]
+OPP_CARDS = 8
 ITERATIONS = [100, 500, 1000, 1500, 2000, 2500, 3000]
 TOP_N = 5
 MAX_PARTITIONS = 500
@@ -57,7 +57,7 @@ MAX_PARTITIONS = 500
 
 | Setting | What It Does | Example |
 |---------|-------------|---------|
-| `PLAYER_HAND` | Your 5-card hand to test | Change to any 5 cards |
+| `PLAYER_HAND` | Your 8-card hand to test | Change to any 8 cards |
 | `OPP_CARDS` | How many cards each AI opponent has | 8 (default), try 5 for easier games |
 | `ITERATIONS` | Milestones to track during simulation | Add/remove values as needed |
 | `TOP_N` | Number of best partitions to display and graph | 5 (default), increase to see more |
@@ -79,7 +79,7 @@ Example: `('3', 'd')` = 3 of Diamonds, `('a', 's')` = Ace of Spades
 ### Console Output
 
 ```
-#1 5 singles (3d, 5c, 5h, 7s, ks)
+#1 8 singles (3d, 5c, 5h, 7s, 8c, 8d, 8h, ks)
     Iters     Win Rate     Avg Left
       100       26.0%         1.42
       500       26.4%         1.43
@@ -102,7 +102,33 @@ Example: `('3', 'd')` = 3 of Diamonds, `('a', 's')` = Ace of Spades
 
 A **partition** is a way to group your cards into valid Big 2 plays:
 
-- `5 singles (3d, 5c, 5h, 7s, ks)` - Play each card individually
-- `[5c, 5h] + 3 singles (3d, 7s, ks)` - Play the pair first, then singles
+- `8 singles (3d, 5c, 5h, 7s, 8c, 8d, 8h, ks)` - Play each card individually
+- `[8c, 8d, 8h] + 5 singles (3d, 5c, 5h, 7s, ks)` - Play the triple first, then singles
 
 The analysis tells you which grouping wins most often.
+
+## How Simulations Work
+
+### Architecture
+
+All 4 players use the same system:
+
+1. **Partition strategy** — Groups your cards into plays (e.g., pairs first, then singles)
+2. **SmartAI strategy** — On each turn, evaluates valid moves and picks the best one
+
+Each player gets a partition. When it's their turn:
+1. **3d override** — On the first round, if they hold `3d`, they must play `SINGLE(3d)` first
+2. **Leading** — Play the first combo from their remaining partition combos
+3. **Beating** — Scan all remaining partition combos for valid moves, pick the best using SmartAI scoring
+4. If no valid combo exists → pass
+5. When a combo is played, it is removed from the remaining list (unplayed combos stay available)
+
+### AI Opponents
+
+Each AI opponent gets a random partition from their dealt hand (up to 50 candidate partitions). This ensures fair comparison — your partition strategy is tested against opponents who also have structured strategies, not just random play.
+
+### Round Rules
+
+- Player holding `3d` goes first; if no one has `3d`, a random player is chosen
+- After 3 consecutive passes, the round resets and the last player who played becomes the new leader
+- Game ends when any player runs out of cards

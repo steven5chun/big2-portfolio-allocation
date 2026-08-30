@@ -2,18 +2,11 @@ import random
 from enum import Enum
 from dataclasses import dataclass, field
 from typing import List, Tuple, Optional
-from game_rule import Deck, Player
+from game_rule import Deck, Player, symbol_to_int
 
 
 SUIT_RANK = {'d': 0, 'c': 1, 'h': 2, 's': 3}
 VALUE_ORDER = ['3', '4', '5', '6', '7', '8', '9', '10', 'j', 'q', 'k', 'a', '2']
-
-
-def symbol_to_int(symbol):
-    mapping = {'j': 11, 'q': 12, 'k': 13, 'a': 14, '2': 15}
-    if symbol in mapping:
-        return mapping[symbol]
-    return int(symbol)
 
 
 class PlayType(Enum):
@@ -39,6 +32,21 @@ class Play:
         if self.rank_value == 0 and self.cards:
             self.rank_value = max(symbol_to_int(c[0]) for c in self.cards)
             self.max_suit = max(SUIT_RANK.get(c[1], 0) for c in self.cards)
+
+        if self.play_type in (PlayType.STRAIGHT, PlayType.STRAIGHT_FLUSH):
+            vals = set(symbol_to_int(c[0]) for c in self.cards)
+            if vals == {3, 4, 5, 14, 15}:
+                self.rank_value = 5
+            elif vals == {3, 4, 5, 6, 15}:
+                self.rank_value = 6
+
+    def __eq__(self, other):
+        if not isinstance(other, Play):
+            return False
+        return self.play_type == other.play_type and sorted(self.cards) == sorted(other.cards)
+
+    def __hash__(self):
+        return hash((self.play_type, tuple(sorted(self.cards))))
 
     def card_count(self):
         return len(self.cards)
@@ -192,7 +200,7 @@ class Big2Game:
             for card in hand:
                 if card == ('3', 'd'):
                     return i
-        return 0
+        return random.randint(0, 3)
 
     def get_valid_moves(self, hand, is_first_round=False, current_play=None, must_follow_leader=False):
         moves = []
@@ -309,7 +317,7 @@ class Big2Game:
                 return i
         return None
 
-    def simulate_with_partition(self, partition_order, ai_players):
+    def simulate_with_partition(self, partition_orders, ai_players):
         self.current_player = self.find_starting_player()
         self.current_play = None
         self.pass_count = 0
@@ -328,105 +336,66 @@ class Big2Game:
                 hand_str = self._format_hand(i)
                 self._log(f"  {name}: [{hand_str}]")
             self._log("")
-            self._log(f"{self.player_names[self.current_player]} holds 3 of diamonds - goes first!")
+            has_3d = any(c == ('3', 'd') for c in self.hands[self.current_player])
+            if has_3d:
+                self._log(f"{self.player_names[self.current_player]} holds 3 of diamonds - goes first!")
+            else:
+                self._log(f"No 3d dealt — {self.player_names[self.current_player]} goes first (random)!")
             self._log("")
 
-        partition_idx = 0
+        partition_idxs = [0, 0, 0, 0]
+        partition_lists = []
+        for p in partition_orders:
+            if p is not None:
+                partition_lists.append([list(c) for c in p])
+            else:
+                partition_lists.append(None)
         max_turns = 200
         turn_count = 0
         last_action_played = False
+        last_player_who_played = self.current_player
 
         while self.winner is None and turn_count < max_turns:
             turn_count += 1
             hand = self.hands[self.current_player]
             player_name = self.player_names[self.current_player]
 
-            if self.current_player == self.round_leader and turn_count > 1:
-                if last_action_played or self.pass_count == 3:
-                    self.round_num += 1
-                    self.pass_count = 0
-                    self.current_play = None
-                    self.first_round = False
-                    if self.verbose:
-                        self._log("")
-                        self._log(f"--- Round {self.round_num - 1} complete! New leader: {player_name} ---")
-                        self._log("")
+            player_partition = partition_lists[self.current_player]
+            partition_remaining = player_partition if player_partition is not None else []
 
-            if self.current_player == 0:
-                if partition_idx < len(partition_order):
-                    combo = partition_order[partition_idx]
-                    play = Play(combo, identify_play_type(combo))
-                    if self.first_round and not any(c == ('3', 'd') for c in combo):
-                        valid = self.get_valid_moves(hand, is_first_round=True, current_play=self.current_play)
-                        if valid:
-                            play = valid[0]
-                        else:
-                            self.pass_turn()
-                            if self.verbose:
-                                self._log(f"  {player_name:15} | Passes")
-                            if self.check_round_complete():
-                                self.round_leader = self.current_player
-                            last_action_played = False
-                            self.current_player = (self.current_player + 1) % 4
-                            continue
-                    valid = self.get_valid_moves(hand, is_first_round=self.first_round, current_play=self.current_play)
-                    if play in valid or (self.current_play is None and self._is_valid_starter(play, hand)):
-                        self.play_cards(self.current_player, play)
-                        self.current_play = play
-                        self.pass_count = 0
-                        self.first_round = False
-                        partition_idx += 1
-                        last_action_played = True
-                        if self.verbose:
-                            remaining = len(self.hands[self.current_player])
-                            self._log(f"  {player_name:15} | Plays: {self._format_play(play)} | Remaining: {remaining}")
-                    else:
-                        self.pass_turn()
-                        if self.verbose:
-                            self._log(f"  {player_name:15} | Passes")
-                        if self.check_round_complete():
-                            self.round_leader = self.current_player
-                        last_action_played = False
-                        self.current_player = (self.current_player + 1) % 4
-                        continue
-                else:
-                    valid = self.get_valid_moves(hand, is_first_round=self.first_round, current_play=self.current_play)
-                    if valid:
-                        play = valid[0]
-                        self.play_cards(self.current_player, play)
-                        self.current_play = play
-                        self.pass_count = 0
-                        self.first_round = False
-                        last_action_played = True
-                        if self.verbose:
-                            remaining = len(self.hands[self.current_player])
-                            self._log(f"  {player_name:15} | Plays: {self._format_play(play)} | Remaining: {remaining}")
-                    else:
-                        self.pass_turn()
-                        if self.verbose:
-                            self._log(f"  {player_name:15} | Passes")
-                        if self.check_round_complete():
-                            self.round_leader = self.current_player
-                        last_action_played = False
-            else:
-                ai = ai_players[self.current_player - 1]
-                play = ai.choose_move(hand, self.current_play, self.first_round, self)
-                if play is None:
-                    self.pass_turn()
-                    if self.verbose:
-                        self._log(f"  {player_name:15} | Passes")
-                    if self.check_round_complete():
-                        self.round_leader = self.current_player
-                    last_action_played = False
-                else:
-                    self.play_cards(self.current_player, play)
-                    self.current_play = play
-                    self.pass_count = 0
+            ai = ai_players[self.current_player]
+            play = ai.choose_move_constrained(hand, self.current_play, self.first_round, partition_remaining, self)
+
+            if play is None:
+                self.pass_turn()
+                if self.verbose:
+                    self._log(f"  {player_name:15} | Passes")
+                if self.check_round_complete():
+                    self.round_leader = last_player_who_played
                     self.first_round = False
-                    last_action_played = True
+                    self.current_play = None
+                    self.pass_count = 0
+                    self.current_player = self.round_leader
                     if self.verbose:
-                        remaining = len(self.hands[self.current_player])
-                        self._log(f"  {player_name:15} | Plays: {self._format_play(play)} | Remaining: {remaining}")
+                        self._log(f"\n--- Round complete! New leader: {self.player_names[self.round_leader]} ---\n")
+                    continue
+                last_action_played = False
+            else:
+                self.play_cards(self.current_player, play)
+                self.current_play = play
+                self.pass_count = 0
+                self.first_round = False
+                last_player_who_played = self.current_player
+                if player_partition is not None:
+                    for i, combo in enumerate(player_partition):
+                        combo_play = Play(combo, identify_play_type(combo))
+                        if play == combo_play:
+                            player_partition.pop(i)
+                            break
+                last_action_played = True
+                if self.verbose:
+                    remaining = len(self.hands[self.current_player])
+                    self._log(f"  {player_name:15} | Plays: {self._format_play(play)} | Remaining: {remaining}")
 
             winner = self.check_winner()
             if winner is not None:
@@ -439,6 +408,7 @@ class Big2Game:
             self.pass_count = 0
             self.current_play = None
             self.first_round = False
+            self.round_leader = last_player_who_played
             if self.verbose:
                 self._log("")
                 self._log(f"--- Round complete! New leader: {self.player_names[self.round_leader]} ---")

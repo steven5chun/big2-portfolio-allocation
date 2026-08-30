@@ -39,31 +39,37 @@ This project aims to discover the optimal strategy for various in-game situation
 
 [Week 1](./journey/week1.md)
 
-- Introduction to Big 2: Understanding the core rules, card rankings, and gameplay of Big 2.
-- Probability Calculations: Using mathematical formulas to calculate the probability of specific card distributions and identifying impossible combinations.
-- Understand the Monte Carlo simulation Method: Exploring how the Monte Carlo simulation method can be applied to model game outcomes and determine strategy.
+- **Game Rules & Constraint Logic:** Mastered the core rule matrices, hierarchy rankings, and discrete system mechanics governing Big 2 gameplay.
+- **Combinatorial Probability Modeling:** Deployed mathematical formulas to calculate specific card distribution parameters and algorithmically identify impossible subsets or hand boundaries.
+- **Stochastic Methodology Foundations:** Explored the structural principles of the Monte Carlo simulation framework to model game trees under uncertainty and optimize decision-making strategies.
+
 
 [Week 2](./journey/week2.md)
-- Learn Python
-- Write Simple Python code
-- Study Big2 Monte Carlos Python code to find out possibility of different combination of big 2 cards
+- **Python Fundamentals:** Mastered syntax foundations, object-oriented programming concepts, and algorithmic control flows.
+- **Script Prototyping:** Engineered baseline scripts to execute simple deterministic calculations and data structures.
+- **Stochastic Analysis:** Explored Monte Carlo Python logic to model the empirical probabilities and distribution characteristics of complex Big 2 card combinations.
 
 [Week 3](./journey/week3.md)
-- Learn Vibe coding
-- Setup AI coding tools
-- Use Vibe coding to write simple game
+- **Generative AI Development:** Researched the paradigms of "vibe coding" and advanced prompt-driven software orchestration.
+- **IDE & Tools Infrastructure:** Configured integrated development environments (IDEs), localized AI-assisted coding extensions, and version control tools.
+- **Rapid Prototyping Execution:** Leveraged generative AI tooling to rapidly build and debug simple, reactive game-engine models.
 
-[Week 4](./journey/week4.md)
-- Based on big 2 game rule, generate cards combinations (or partitions)
-- Design big 2 game engine
-- Run monte carlos simulation to find out best cards cardscombination
-- analysis the results
 
-[Week 5](./journey/week5.md)
-- Financial Theories on Portfolio
-- What is finanicla term: Modern Portfolio Theory, Variance & Volatility, Risk, Sharp Ratio
-- Translating Financial Metrics to Big 2 Allocation
-- Example of using monte carlos simulation for stock allocation  
+[Week 4-5](./journey/week4-5.md)
+- **Combinatorial Card Partitioning:** Algorithmic generation of all valid card combinations and potential hand partitions from a fixed starting hand.
+- **Stochastic Game Engine Architecture:** Design and implementation of a discrete state-machine engine governing Big 2 rules, structural logic, and transition states.
+- **Expected Value (EV) Modeling:** Formal mathematical modeling of the game’s utility function to calculate probability-weighted point returns rather than binary win rates.
+- **Monte Carlo Simulation Optimization:** Development of an iterative stochastic loop framework to isolate the mathematically optimal card configuration across thousands of independent trials.
+- **Quantitative Results Analysis:** Statistical evaluation of the simulation data to map out the Efficient Frontier and evaluate strategy performance under uncertainty.
+
+
+[Week 6](./journey/week6.md)
+
+- **Modern Portfolio Theory (MPT) Core:** Researched the foundations of quantitative portfolio optimization, asset weighting frameworks, and the mathematics of the Efficient Frontier.
+- **Quantitative Metrics Exploration:** Analyzed key financial risk parameters, including systemic Variance, standard Volatility measures, Downside Risk boundaries, and the Sharpe Ratio framework.
+- **Asset-to-Card Allocation Mapping:** Formulated a structural cross-disciplinary mapping system to translate financial metrics directly into Big 2 card distribution parameters.
+- **Financial Benchmark Prototyping:** Engineered a baseline stock allocation model using Monte Carlo simulations to calculate risk-adjusted equity weights.
+
 
 ## References
 

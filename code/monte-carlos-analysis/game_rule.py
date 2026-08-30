@@ -1,5 +1,13 @@
 import random
+import itertools
 from math import comb, perm
+
+
+def symbol_to_int(symbol):
+    mapping = {'j': 11, 'q': 12, 'k': 13, 'a': 14, '2': 15}
+    if symbol in mapping:
+        return mapping[symbol]
+    return int(symbol)
 
 
 class Card:
@@ -51,18 +59,7 @@ class Player:
         self.hand = sorted(cards, key=lambda c: (self.symbol_to_int(c[0]), Deck.SUIT_RANK.get(c[1], 0)))
 
     def symbol_to_int(self, symbol):
-        if symbol == 'a':
-            return 14
-        elif symbol == 'j':
-            return 11
-        elif symbol == 'q':
-            return 12
-        elif symbol == 'k':
-            return 13
-        elif symbol == '2':
-            return 15
-        else:
-            return int(symbol)
+        return symbol_to_int(symbol)
 
     def hand_to_int(self):
         temp = []
@@ -255,13 +252,8 @@ class Player:
         spades = [(j, k) for j, k in self.hand if k == 's']
         for suit_cards in [diamonds, clubs, hearts, spades]:
             if len(suit_cards) >= 5:
-                for i in range(len(suit_cards) - 4):
-                    for j in range(i + 1, len(suit_cards) - 3):
-                        for k in range(j + 1, len(suit_cards) - 2):
-                            for l in range(k + 1, len(suit_cards) - 1):
-                                for m in range(l + 1, len(suit_cards)):
-                                    flush = [suit_cards[i], suit_cards[j], suit_cards[k], suit_cards[l], suit_cards[m]]
-                                    all_flushes.append(flush)
+                for flush in itertools.combinations(suit_cards, 5):
+                    all_flushes.append(list(flush))
         return all_flushes
 
     def print_flush_combinations(self):
@@ -281,18 +273,9 @@ class Player:
                     continue
                 three_cards = [c for c in self.hand if self.symbol_to_int(c[0]) == t_rank]
                 pair_cards = [c for c in self.hand if self.symbol_to_int(c[0]) == p_rank]
-                for t1 in three_cards:
-                    for t2 in three_cards:
-                        for t3 in three_cards:
-                            if len({t1, t2, t3}) < 3:
-                                continue
-                            for p1 in pair_cards:
-                                for p2 in pair_cards:
-                                    if p1 == p2:
-                                        continue
-                                    fh = [t1, t2, t3, p1, p2]
-                                    if fh not in all_full_houses:
-                                        all_full_houses.append(fh)
+                for t_combo in itertools.combinations(three_cards, 3):
+                    for p_combo in itertools.combinations(pair_cards, 2):
+                        all_full_houses.append(list(t_combo) + list(p_combo))
         return all_full_houses
 
     def print_full_house_combinations(self):
@@ -345,17 +328,9 @@ class Player:
                 r2 = pair_ranks[j_idx]
                 cards_r1 = [c for c in self.hand if self.symbol_to_int(c[0]) == r1]
                 cards_r2 = [c for c in self.hand if self.symbol_to_int(c[0]) == r2]
-                for c1 in cards_r1:
-                    for c2 in cards_r1:
-                        if c1 == c2:
-                            continue
-                        for c3 in cards_r2:
-                            for c4 in cards_r2:
-                                if c3 == c4:
-                                    continue
-                                tp = [c1, c2, c3, c4]
-                                if tp not in all_two_pairs:
-                                    all_two_pairs.append(tp)
+                for c1, c2 in itertools.combinations(cards_r1, 2):
+                    for c3, c4 in itertools.combinations(cards_r2, 2):
+                        all_two_pairs.append([c1, c2, c3, c4])
         return all_two_pairs
 
     def print_two_pair_combinations(self):

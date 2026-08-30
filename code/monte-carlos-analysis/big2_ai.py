@@ -1,5 +1,5 @@
 import random
-from big2_game import Play, PlayType, can_beat, symbol_to_int, SUIT_RANK
+from big2_game import Play, PlayType, can_beat, symbol_to_int, SUIT_RANK, identify_play_type
 
 
 class SmartAI:
@@ -16,6 +16,42 @@ class SmartAI:
             return self._choose_lead(valid_moves, hand)
         else:
             return self._choose_beat(valid_moves, hand, current_play)
+
+    def choose_move_constrained(self, hand, current_play, is_first_round, partition_remaining, game=None):
+        valid_moves = self._get_valid_moves(hand, current_play, is_first_round)
+
+        if not valid_moves:
+            return None
+
+        if is_first_round:
+            must_have_3d = any(c == ('3', 'd') for c in hand)
+            if must_have_3d:
+                play_3d = Play([('3', 'd')], PlayType.SINGLE)
+                if play_3d in valid_moves:
+                    return play_3d
+
+        if not partition_remaining:
+            return None
+
+        partition_plays = [Play(combo, identify_play_type(combo)) for combo in partition_remaining]
+
+        if current_play is None:
+            first_combo = partition_remaining[0]
+            first_play = Play(first_combo, identify_play_type(first_combo))
+            if first_play in valid_moves:
+                return first_play
+            return None
+
+        valid_partition_plays = [pp for pp in partition_plays if pp in valid_moves]
+        if valid_partition_plays:
+            scored = []
+            for move in valid_partition_plays:
+                score = self._score_beat(move, hand, current_play)
+                scored.append((score, move))
+            scored.sort(key=lambda x: x[0])
+            return scored[0][1]
+
+        return None
 
     def _get_valid_moves(self, hand, current_play, is_first_round):
         from big2_game import Big2Game

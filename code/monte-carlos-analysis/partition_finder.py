@@ -1,12 +1,5 @@
 from itertools import combinations
-from game_rule import Player, Deck
-
-
-def symbol_to_int(symbol):
-    mapping = {'j': 11, 'q': 12, 'k': 13, 'a': 14, '2': 15}
-    if symbol in mapping:
-        return mapping[symbol]
-    return int(symbol)
+from game_rule import Player, Deck, symbol_to_int
 
 
 def get_all_combos(hand):
