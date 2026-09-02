@@ -2,15 +2,21 @@
 
 ## Financial Theories on Portfolio management
 
-#### 1. Modern Portfolio Theory (MPT)
+## Summary
+
+In both strategic gameplay and financial investing, agents are inherently loss-averse; focusing solely on the probability of winning is an incomplete strategy. A robust optimization model must concurrently evaluate the probability and systemic impact of losing. Therefore, any rational decision-making framework must balance upside potential against downside risk. Quantitative metrics—specifically volatility, Risk and the Sharpe Ratio—serve as ideal tools to analyze risk exposure and outcome impacts across different card combinations or asset portfolios.
+
+
+
+#### 1. Modern Portfolio Theory (MPT) [[1](https://www.youtube.com/watch?v=InJ1alATnRw)]
 *   **Definition:** A Nobel Prize-winning framework introduced by Harry Markowitz that optimizes a basket of assets. It proves that an asset's risk and return should not be assessed in isolation, but by how it contributes to an entire portfolio’s collective behavior.
 *   **The Efficient Frontier:** The mathematical curve representing portfolios that offer the highest expected return for a defined level of risk. Any allocation sitting below this line is inefficient.
 
 #### 2. Variance & Volatility (σ² and σ)
 *   **Definition:** Variance (σ²) calculates how far an asset’s returns scatter around its historical mean. Standard Deviation (σ), or Volatility, is the square root of variance. High volatility implies wide, unpredictable price swings.
 
-#### 3. Downside Risk
-*   **Definition:** The specific probability that an investment's actual return will fall below its expected value, resulting in financial loss. Unlike general volatility (which tracks both up and down swings), downside risk focuses strictly on worst-case scenarios.
+#### 3. Value at Risk (VaR) [[2](https://www.youtube.com/watch?v=a1f-Zso8spk)]
+*   **Definition:** Value at Risk (VaR) is a standardized financial metric that measures the maximum expected loss an asset or portfolio could face under normal market conditions within a specific timeframe and at a set confidence level.
 
 #### 4. Sharpe Ratio
 
@@ -31,7 +37,6 @@
     - Zero or negative: Bad. Safe bank savings or bonds pay better than this choice
     
 
-
 ## Translating Financial Metrics to Big 2 Allocation
 
 When splitting a hand in Big 2, you are managing a **fixed capital pool** (your cards). Below is the direct structural alignment:
@@ -48,5 +53,7 @@ When splitting a hand in Big 2, you are managing a **fixed capital pool** (your 
 
 ## Reference
 
-- [1] [Monte Carlo Simulation of a Stock Portfolio with Python](https://www.youtube.com/watch?v=6-dhdMDiYWQ)
-- [2] [Value at Risk (VaR) In Python: Monte Carlo Method](https://www.youtube.com/watch?v=X8aNFXJEENs)
+- [1] [Modern Portfolio Theory Explained: The Math Behind Diversification](https://www.youtube.com/watch?v=InJ1alATnRw)
+- [2] [Value at Risk (VaR) Explained: A Comprehensive Overview](https://www.youtube.com/watch?v=a1f-Zso8spk)
+- [3] [Monte Carlo Simulation of a Stock Portfolio with Python](https://www.youtube.com/watch?v=6-dhdMDiYWQ)
+- [4] [Value at Risk (VaR) In Python: Monte Carlo Method](https://www.youtube.com/watch?v=X8aNFXJEENs)
