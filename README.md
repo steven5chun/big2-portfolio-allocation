@@ -65,10 +65,13 @@ This project aims to discover the optimal strategy for various in-game situation
 
 [Week 6](./journey/week6.md)
 
-- **Modern Portfolio Theory (MPT) Core:** Researched the foundations of quantitative portfolio optimization, asset weighting frameworks, and the mathematics of the Efficient Frontier.
+- **Modern Portfolio Theory (MPT):** Researched the foundations of quantitative portfolio optimization, asset weighting frameworks, and the mathematics of the Efficient Frontier.
 - **Quantitative Metrics Exploration:** Analyzed key financial risk parameters, including systemic Variance, standard Volatility measures, Downside Risk boundaries, and the Sharpe Ratio framework.
 - **Asset-to-Card Allocation Mapping:** Formulated a structural cross-disciplinary mapping system to translate financial metrics directly into Big 2 card distribution parameters.
-- **Financial Benchmark Prototyping:** Engineered a baseline stock allocation model using Monte Carlo simulations to calculate risk-adjusted equity weights.
+
+[Week 7](./journey/week7.md)
+- **Application of Financial Theory:** Applied Modern Portfolio Theory and Quantitative Methods to the Big 2 card game.
+- **Simulation Result Analysis:** Analyzed Big 2 card combination simulations through a financial lens.
 
 
 ## References

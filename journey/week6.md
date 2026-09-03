@@ -36,21 +36,6 @@ In both strategic gameplay and financial investing, agents are inherently loss-a
     - Under 1.0: Low or poor. You do not get paid enough extra return for the danger.
     - Zero or negative: Bad. Safe bank savings or bonds pay better than this choice
     
-
-## Translating Financial Metrics to Big 2 Allocation
-
-When splitting a hand in Big 2, you are managing a **fixed capital pool** (your cards). Below is the direct structural alignment:
-
-| Financial Metric | Capital Market Context | Big 2 Systemic Analogy |
-| :--- | :--- | :--- |
-| **Asset Allocation** | Dividing wealth into Stocks, Bonds, and Commodities to maximize returns. | Dividing a 13-card hand into sub-combos (e.g., *Full House + Pair* vs. *Straight + Trips*). |
-| **Monte Carlo Simulation** | Running many random market pathways to stress-test an investment portfolio. | Running many random opponent deals to test how a **fixed hand split** holds up against variance. |
-| **Variance / Volatility** | The intensity of asset price fluctuations over a given period. | **Sensitivity to Opponent Distribution:** How wildly your win rate swings depending on what opponents hold. |
-| **Downside Risk** | The likelihood of losing capital or suffering a portfolio crash. | **The Penalty Risk:** The probability of failing to gain control, getting blocked, and taking double/triple point penalties. |
-| **Risk-Free Rate ($R_f$)** | The baseline return of a zero-risk asset (e.g., US Treasury Bonds). | **Pass Baseline:** The average points lost by passively passing versus actively contesting a round. |
-| **Sharpe Ratio** | Risk-adjusted efficiency of a portfolio. | **Game Efficiency Score:** Evaluating if a card split yields a high win rate safely (High Sharpe) or relies on luck (Low Sharpe). |
-
-
 ## Financial Analogue to the Big 2 Game
 In a Big 2 simulation, the Sharpe ratio measures the consistency and safety of a card combination strategy.
 
