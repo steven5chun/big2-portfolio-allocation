@@ -17,15 +17,16 @@ Driven by a desire to master foundational quantitative finance concepts, I built
    This project was realizing that arranging a 13-card hand is functionally identical to constructing a stock portfolio.
 
    - The Strategic Dilemma: Should I split my cards into a high-risk 5-card Straight and weak singles, or partition them into stable pairs and high-ranking control cards?
-   - The Financial Equivalent: This maps perfectly to the Efficient Frontier in Modern Portfolio Theory (MPT). I learned how to balance aggressive, high-yield combinations against low-volatility preservation assets (like Aces and Twos) to maximize my structural "Sharpe Ratio" before the game even begins.
+   - The Financial Equivalent: This maps perfectly to Modern Portfolio Theory (MPT). I learned how to use Monte Carlo method to simulate different combinations (like Aces and Twos) to maximize my structural "Sharpe Ratio" before the game even begins.
    
 
 ## Core Takeaway
 
-This project did not yield a perfect, unbeatable card algorithm—because in systems dominated by human behavior, a perfect formula does not exist.
-The true value is the mastery of the methodology. I transitioned from a non-programmer to an analytical systems-thinker, proving that complex financial engineering concepts can be mastered by analyzing the rule-bound systems we interact with every day.
+This project did not yield a 'perfect' or unbeatable card algorithm, because in systems dominated by human behavior, a perfect formula does not exist. The true value lies in mastering the methodology: applying financial theory to real-world problems through daily observation.
 
-I quickly discovered that static formulas are not enough. Big 2, like Wall Street, is a highly volatile, dynamic system where an individual's success depends heavily on the unpredictable, non-linear actions of other players. 
+Furthermore, I leveraged AI to bridge the gap between my initial lack of programming expertise and the ability to generate functional code. Using AI helped me learn complex financial engineering concepts faster and more efficiently.
+ 
+Finally, I recognized that static formulas are insufficient for solving these problems. Games like Big 2, much like Wall Street, are highly volatile, dynamic systems where success depends heavily on the unpredictable, non-linear actions of other players. Relying solely on win rate without considering maximum drawdown is not a complete solution for evaluating the success of a portfolio (card combination). I am eager to explore advanced methods for navigating such environments.
 
 ## Background
 
