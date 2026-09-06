@@ -66,5 +66,4 @@ Instead of just telling you how often a strategy wins (win rate), the Sharpe rat
 - [2] [Value at Risk (VaR) Explained: A Comprehensive Overview](https://www.youtube.com/watch?v=a1f-Zso8spk)
 - [3] [What is the Sharpe Ratio? Risk-Adjusted Returns Explained](https://www.youtube.com/watch?v=B7XbE5UelKk&t=39s)
 - [4] [The Sharpe Ratio Explained (by a quant trader)](https://www.youtube.com/watch?v=9HD6xo2iO1g&t=228s)
-- [5] [Monte Carlo Simulation of a Stock Portfolio with Python](https://www.youtube.com/watch?v=6-dhdMDiYWQ)
-- [6] [Value at Risk (VaR) In Python: Monte Carlo Method](https://www.youtube.com/watch?v=X8aNFXJEENs)
+

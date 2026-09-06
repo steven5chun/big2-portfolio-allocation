@@ -67,7 +67,7 @@ It runs 1,000,000 iterations, dealing random 13-card hands and checking for the 
 - Four of a kind — Four cards of the same rank (e.g., A♥ A♠ A♦ A♣)
 - Straight flush — Five consecutive cards all of the same suit (e.g., 4♣ 5♣ 6♣ 7♣ 8♣) — the rarest hand
 
-source code refer to [capsa.py](../code/combination-probabilities/capsa.py) and [monte_carlo_simulation.py](../code/combination-probabilities//monte_carlo_simulation.py)
+source code refer to [capsa.py](https://github.com/BobSwagg13/Application-of-Combinatorics-in-Big-Two/blob/main/src/capsa.py) and [monte_carlo_simulation.py](https://github.com/BobSwagg13/Application-of-Combinatorics-in-Big-Two/blob/main/src/monte_carlo_simulation.py)
 
 ## Takeaway 
 
