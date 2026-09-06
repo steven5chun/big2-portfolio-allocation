@@ -43,9 +43,9 @@ Each metric answers a different question. Use them together for optimal strategy
 
 ### VaR Interpretation
 
-- **VaR(95%) = -6** → 95% of games, you lose no more than 6 points
-- **VaR(95%) = -24** → 5% of games, you lose more than 24 points (catastrophic tail risk)
-- VaR close to 0 = limited downside even in bad scenarios
+- **VaR(95%) = -6** → In 95% of games, your outcome is -6 or better (win or lose ≤6 points). Only 5% of games lose more than 6 points.
+- **VaR(95%) = -24** → In 95% of games, your outcome is -24 or better. But in the worst 5% of games, you lose more than 24 points (catastrophic tail risk).
+- **VaR close to 0** → The 5th percentile loss is small — even in bad scenarios, your bankroll is relatively safe.
 
 ### Decision Framework
 
@@ -83,3 +83,24 @@ Each metric answers a different question. Use them together for optimal strategy
   ![](../images/risk_histogram.png)
   - `sharpe_bar_chart.png` — Sharpe Ratio ranking bar chart for top 20 partitions
   ![](../images/sharpe_bar_chart.png)
+
+
+## Takeaway
+
+### EV Tells You What You Earn. Sharpe Tells You What It Costs.
+
+Week 4 established that Expected Value determines profitability. Week 7 adds **risk-adjusted return analysis** using Sharpe Ratio and VaR — the same framework portfolio managers use to evaluate investments.
+
+### Three-Layer Decision Framework
+
+| Layer | Question | Example from Results |
+|-------|----------|---------------------|
+| **EV > 0** | Is this profitable? | All 4 partitions pass (EV +1.05 to +10.16) |
+| **VaR(95%)** | Can I survive the worst 5%? | Partition #2 (VaR -6) is 2.3× safer than #1 (VaR -14) |
+| **Sharpe Ratio** | Is the return worth the risk? | Partition #1 (Sharpe 1.13) beats #2 (Sharpe 0.78) |
+
+### Key Findings
+
+**VaR reveals what EV hides** — Partitions #1 and #3 have identical VaR (-14) but very different EVs (+10.16 vs +3.95). This means both have the same worst-case downside — #1's extra return comes entirely from bigger wins, not reduced losses. In finance terms: **positive skew** (same floor, higher ceiling).
+
+Play the partition with the **highest Sharpe Ratio** that fits your risk tolerance. **Aggressive position sizing** → Partition #1 (maximize returns). **Defensive position sizing** → Partition #2 (survivability first). 
