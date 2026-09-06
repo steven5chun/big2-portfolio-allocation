@@ -4,7 +4,7 @@ The Big 2 Portfolio Allocation: A Journey to Learn Portfolio Management by Monte
 
 ## Project Goal
 
-Driven by a desire to master foundational quantitative finance concepts, I built a Python-based Monte Carlo Simulation (MCS) framework. By treating the traditional card game Big 2 (鋤大D) as an asset allocation problem, this project explores how optimizing a 13-card hand directly mirrors managing financial risk in highly volatile markets.
+Driven by a desire to master foundational quantitative finance concepts, I built a Python-based Monte Carlo Simulation (MCS) framework. By treating the traditional card game Big 2 (鋤大D) as an asset allocation problem, this project explores how optimizing a 13-card hand directly mirrors managing financial portfolio in highly volatile markets.
 
 ## Background
 
