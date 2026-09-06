@@ -25,8 +25,9 @@ Driven by a desire to master foundational quantitative finance concepts, I built
 This project did not yield a 'perfect' or unbeatable card algorithm, because in systems dominated by human behavior, a perfect formula does not exist. The true value lies in mastering the methodology: applying financial theory to real-world problems through daily observation.
 
 Furthermore, I leveraged AI to bridge the gap between my initial lack of programming expertise and the ability to generate functional code. Using AI helped me learn complex financial engineering concepts faster and more efficiently.
- 
-Finally, I recognized that static formulas are insufficient for solving these problems. Games like Big 2, much like Wall Street, are highly volatile, dynamic systems where success depends heavily on the unpredictable, non-linear actions of other players. Relying solely on win rate without considering maximum drawdown is not a complete solution for evaluating the success of a portfolio (card combination). I am eager to explore advanced methods for navigating such environments.
+
+Finally, I realized that static formulas are inadequate for addressing these complex problems. Much like Wall Street, games like Big 2 are highly volatile, dynamic systems where outcomes are heavily influenced by the unpredictable, non-linear behavior of other participants. Consequently, evaluating a portfolio or a specific card combination solely by its win rate without accounting for maximum drawdown offers an incomplete measure of success. While Monte Carlo methods provide a foundational approach to portfolio evaluation, I am eager to explore advanced methodologies designed to navigate such complex environments.
+
 
 ## Background
 
