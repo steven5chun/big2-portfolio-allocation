@@ -6,19 +6,13 @@ The Big 2 Portfolio Allocation: A Journey to Learn Portfolio Management by Monte
 
 Driven by a desire to master foundational quantitative finance concepts, I built a Python-based Monte Carlo Simulation (MCS) framework. By treating the traditional card game Big 2 (鋤大D) as an asset allocation problem, this project explores how optimizing a 13-card hand directly mirrors managing financial risk in highly volatile markets.
 
-## The Learning Journey & System Realizations
+## Background
 
-1. ***Breaking the Code Barrier via "Vibe Coding":***
+Big 2 (鋤大D) is a popular Asian card game for four players. The goal is to play all your cards first. Players use single cards, pairs, or five-card hands like poker. The player with the 3 of diamonds goes first. The 2 is the highest card, and diamonds are the lowest suit.where the number 2 holds the highest value. 
 
-   I started this project with zero programming experience. By leveraging GitHub open-source repositories for basic game rules and relying on AI-assisted "Vibe Coding," I stitched together a high-performance simulation script. The journey was to learn core software architecture, data structures, and debugging through direct, iterative execution.
+I have always been curious about how to consistently win at Big 2 and whether there is a strategic approach to improving the win rate. 
 
-2. ***The Core Realization: Hand Arrangements = Asset Allocation***
-
-   This project was realizing that arranging a 13-card hand is functionally identical to constructing a stock portfolio.
-
-   - The Strategic Dilemma: Should I split my cards into a high-risk 5-card Straight and weak singles, or partition them into stable pairs and high-ranking control cards?
-   - The Financial Equivalent: This maps perfectly to Modern Portfolio Theory (MPT). I learned how to use Monte Carlo method to simulate different combinations (like Aces and Twos) to maximize my structural "Sharpe Ratio" before the game even begins.
-   
+This project aims to discover the optimal strategy for various in-game situations while documenting my personal learning journey.
 
 ## Core Takeaway
 
@@ -27,15 +21,6 @@ This project did not yield a 'perfect' or unbeatable card algorithm, because in 
 Furthermore, I leveraged AI to bridge the gap between my initial lack of programming expertise and the ability to generate functional code. Using AI helped me learn complex financial engineering concepts faster and more efficiently.
 
 Finally, I realized that static formulas are inadequate for addressing these complex problems. Much like Wall Street, games like Big 2 are highly volatile, dynamic systems where outcomes are heavily influenced by the unpredictable, non-linear behavior of other participants. Consequently, evaluating a portfolio or a specific card combination solely by its win rate without accounting for maximum drawdown offers an incomplete measure of success. While Monte Carlo methods provide a foundational approach to portfolio evaluation, I am eager to explore advanced methodologies designed to navigate such complex environments.
-
-
-## Background
-
-Big 2 (鋤大D) is a popular Asian card game for four players. The goal is to play all your cards first. Players use single cards, pairs, or five-card hands like poker. The player with the 3 of diamonds goes first. The 2 is the highest card, and diamonds are the lowest suit.where the number 2 holds the highest value. 
-
-I have always been curious about how to consistently win at Big 2 and whether there is a strategic approach to improving the win rate. 
-
-This project aims to discover the optimal strategy for various in-game situations while documenting my personal learning journey.
 
 ## Learning Journey
 
@@ -75,6 +60,19 @@ This project aims to discover the optimal strategy for various in-game situation
 - **Application of Financial Theory:** Applied Modern Portfolio Theory and Quantitative Methods to the Big 2 card game.
 - **Simulation Result Analysis:** Analyzed Big 2 card combination simulations through a financial lens.
 
+
+## Key Learnings 
+
+1. ***Breaking the Code Barrier via "Vibe Coding":***
+
+   I started this project with zero programming experience. By leveraging GitHub open-source repositories for basic game rules and relying on AI-assisted "Vibe Coding," I stitched together a high-performance simulation script. The journey was to learn core software architecture, data structures, and debugging through direct, iterative execution.
+
+2. ***The Core Realization: Hand Arrangements = Asset Allocation***
+
+   This project was realizing that arranging a 13-card hand is functionally identical to constructing a stock portfolio.
+
+   - The Strategic Dilemma: Should I split my cards into a high-risk 5-card Straight and weak singles, or partition them into stable pairs and high-ranking control cards?
+   - The Financial Equivalent: This maps perfectly to Modern Portfolio Theory (MPT). I learned how to use Monte Carlo method to simulate different combinations (like Aces and Twos) to maximize my structural "Sharpe Ratio" before the game even begins.
 
 ## References
 
