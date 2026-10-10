@@ -31,18 +31,18 @@ Finally, I realized that static formulas are inadequate for addressing these com
 - **Stochastic Methodology Foundations:** Explored the structural principles of the Monte Carlo simulation framework to model game trees under uncertainty and optimize decision-making strategies.
 
 
-[Week 2](./journey/week2.md)
+[Week 2](/journey/week2.md)
 - **Python Fundamentals:** Mastered syntax foundations, object-oriented programming concepts, and algorithmic control flows.
 - **Script Prototyping:** Engineered baseline scripts to execute simple deterministic calculations and data structures.
 - **Stochastic Analysis:** Explored Monte Carlo Python logic to model the empirical probabilities and distribution characteristics of complex Big 2 card combinations.
 
-[Week 3](./journey/week3.md)
+[Week 3](/journey/week3.md)
 - **Generative AI Development:** Researched the paradigms of "vibe coding" and advanced prompt-driven software orchestration.
 - **IDE & Tools Infrastructure:** Configured integrated development environments (IDEs), localized AI-assisted coding extensions, and version control tools.
 - **Rapid Prototyping Execution:** Leveraged generative AI tooling to rapidly build and debug simple, reactive game-engine models.
 
 
-[Week 4-5](./journey/week4-5.md)
+[Week 4-5](/journey/week4-5.md)
 - **Combinatorial Card Partitioning:** Algorithmic generation of all valid card combinations and potential hand partitions from a fixed starting hand.
 - **Stochastic Game Engine Architecture:** Design and implementation of a discrete state-machine engine governing Big 2 rules, structural logic, and transition states.
 - **Expected Value (EV) Modeling:** Formal mathematical modeling of the game’s utility function to calculate probability-weighted point returns rather than binary win rates.
@@ -50,13 +50,13 @@ Finally, I realized that static formulas are inadequate for addressing these com
 - **Quantitative Results Analysis:** Statistical evaluation of the simulation data to map out the Efficient Frontier and evaluate strategy performance under uncertainty.
 
 
-[Week 6](./journey/week6.md)
+[Week 6](/journey/week6.md)
 
 - **Modern Portfolio Theory (MPT):** Researched the foundations of quantitative portfolio optimization, asset weighting frameworks, and the mathematics of the Efficient Frontier.
 - **Quantitative Metrics Exploration:** Analyzed key financial risk parameters, including systemic Variance, standard Volatility measures, Downside Risk boundaries, and the Sharpe Ratio framework.
 - **Asset-to-Card Allocation Mapping:** Formulated a structural cross-disciplinary mapping system to translate financial metrics directly into Big 2 card distribution parameters.
 
-[Week 7](./journey/week7.md)
+[Week 7](/journey/week7.md)
 - **Application of Financial Theory:** Applied Modern Portfolio Theory and Quantitative Methods to the Big 2 card game.
 - **Simulation Result Analysis:** Analyzed Big 2 card combination simulations through a financial lens.
 
