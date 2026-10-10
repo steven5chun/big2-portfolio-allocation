@@ -24,7 +24,7 @@ Finally, I realized that static formulas are inadequate for addressing these com
 
 ## Learning Journey
 
-[Week 1](journey/week1.md)
+[Week 1](/steven5chun/big2-portfolio-allocation/blob/main/journey/week1.md)
 
 - **Game Rules & Constraint Logic:** Mastered the core rule matrices, hierarchy rankings, and discrete system mechanics governing Big 2 gameplay.
 - **Combinatorial Probability Modeling:** Deployed mathematical formulas to calculate specific card distribution parameters and algorithmically identify impossible subsets or hand boundaries.
