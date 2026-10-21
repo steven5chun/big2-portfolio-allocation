@@ -48,7 +48,7 @@ The fundamental difference is that Monte Carlo Simulation (MCS) is a statistical
 | Application for Big Two Game | Used to analyze the 13-card combinations (portfolios) to determine the best winning combination. | Used to find exact winning sequences when the opponent's cards are fully known. |
 
 
-The reason Monte Carlo Simulation (MCS) is superior to Monte Carlo Tree Search (MCTS) for Big 2 card combination arrangement is because hand organization is fundamentally a portfolio combination problem. It is a one-time macro allocation and forecasting problem. At the moment of arranging your initial 13 cards, you are not engaging in a turn-based, competitive game with a sequential chain of reactive player choices; you are simply optimizing your resources before the match begins.
+Therefore, for the Big Two combination problem, we use Monte Carlo Simulation (MCS) rather than Monte Carlo Tree Search (MCTS) to find the best winning combination.
 
 
 ## Takeaway
