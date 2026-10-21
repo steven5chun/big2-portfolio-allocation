@@ -28,7 +28,7 @@ It is widely applied in portfolio management, investment planning, risk analysis
 
 Running the simulation repeatedly provides standard deviation and variance metrics, ensuring that the more you sample, the more accurate your future estimation becomes
 
-### The 3 Core Steps to Run a Simulation
+### The 3 Core Steps to Run a big 2 cards game Monte Carlos Simulation
 
 1. ***Deterministic Rules:*** Program the actual game engine with rules eforehand.
 2. ***Random Inputs:*** The computer generates random values of the 13 cards and and assign to each players.
