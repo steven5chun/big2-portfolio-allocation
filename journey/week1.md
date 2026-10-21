@@ -30,9 +30,9 @@ Running the simulation repeatedly provides standard deviation and variance metri
 
 ### The 3 Core Steps to Run a Simulation
 
-1. ***Set up the predictive model:*** Identify the dependent variable you want to predict and the independent variables (input risks or predictive factors) that will drive those predictions
-2. ***Specify the probability distribution:*** Define a range of likely values and assign probability weights for the independent variables using historical data or subjective expert judgment.
-3. ***Run simulations repeatedly:*** Generate random values for the independent variables repeatedly until you gather a large enough sample size to represent the near-infinite combinations of outcomes
+1• ***Deterministic Rules:*** Program the actual game engine with rules eforehand.
+2• ***Random Inputs:*** The computer generates random values of the 13 cards and and assign to each players.
+3• ***Emergent Probability:*** By running this mock game thousands or millions of times, the frequency of wins, losses, or remaining cards reveals the true probability distribution.
 
 ## Different between Monte Carlos Tree Search (MCTS) and Monte Carlos Simulation (MCS)
 
