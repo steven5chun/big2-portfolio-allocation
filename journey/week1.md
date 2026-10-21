@@ -30,9 +30,9 @@ Running the simulation repeatedly provides standard deviation and variance metri
 
 ### The 3 Core Steps to Run a Simulation
 
-1• ***Deterministic Rules:*** Program the actual game engine with rules eforehand.
-2• ***Random Inputs:*** The computer generates random values of the 13 cards and and assign to each players.
-3• ***Emergent Probability:*** By running this mock game thousands or millions of times, the frequency of wins, losses, or remaining cards reveals the true probability distribution.
+1. ***Deterministic Rules:*** Program the actual game engine with rules eforehand.
+2. ***Random Inputs:*** The computer generates random values of the 13 cards and and assign to each players.
+3. ***Emergent Probability:*** By running this mock game thousands or millions of times, the frequency of wins, losses, or remaining cards reveals the true probability distribution.
 
 ## Different between Monte Carlos Tree Search (MCTS) and Monte Carlos Simulation (MCS)
 
