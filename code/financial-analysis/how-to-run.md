@@ -15,6 +15,13 @@
 
 ### EV Convergence Analysis
 
+**macOS / Linux:**
+```bash
+cd code/financial-analysis
+python3 ev_convergence.py
+```
+
+**Windows (PowerShell):**
 ```powershell
 cd code\financial-analysis
 python ev_convergence.py
@@ -22,6 +29,13 @@ python ev_convergence.py
 
 ### Risk Analysis (Variance, VaR, Sharpe Ratio)
 
+**macOS / Linux:**
+```bash
+cd code/financial-analysis
+python3 risk_analysis.py
+```
+
+**Windows (PowerShell):**
 ```powershell
 cd code\financial-analysis
 python risk_analysis.py

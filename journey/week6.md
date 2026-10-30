@@ -4,7 +4,7 @@
 
 ## Summary
 
-In both strategic gameplay and financial investing, agents are inherently loss-averse; focusing solely on the probability of winning is an incomplete strategy. A robust optimization model must concurrently evaluate the probability and systemic impact of losing. Therefore, any rational decision-making framework must balance upside potential against downside risk. Quantitative metrics—specifically volatility, Risk and the Sharpe Ratio—serve as ideal tools to analyze risk exposure and outcome impacts across different card combinations or asset portfolios.
+In both strategic gameplay and financial investing, agents are inherently loss-averse; focusing solely on the probability of winning is an incomplete strategy. A robust optimization model must concurrently evaluate the probability and systemic impact of losing. Therefore, any rational decision-making framework must balance upside potential against downside risk. Quantitative metrics—specifically volatility, VaR and the Sharpe Ratio—serve as ideal tools to analyze risk exposure and outcome impacts across different card combinations or asset portfolios.
 
 
 

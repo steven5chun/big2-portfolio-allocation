@@ -1,5 +1,5 @@
 # Week 1
-## Summmary
+## Summary
 - Introduction to Big 2: Understanding the core rules, card rankings, and gameplay of Big 2.
 - Probability Calculations: Using mathematical formulas to calculate the probability of specific card distributions and identifying impossible combinations.
 - The Monte Carlo Method: Exploring how the Monte Carlo simulation method can be applied to model game outcomes and determine card combination strategy.
@@ -14,7 +14,7 @@ There are 635,013,559,600 total unique starting hands. [[1](https://github.com/B
 - Five-card poker hands (Straights, Flushes, Full Houses, Four-of-a-Kind, and Straight Flushes)
 
 
-## What is Monte Carlos Simulation
+## What is Monte Carlo Simulation
 
 Monte Carlo Simulation is a mathematical technique used to estimate the possible outcomes of an uncertain event by modeling the probability of different outcomes using random sampling. It acts like a way to look into the future to make better business, investment, and planning decisions. [[2](https://www.youtube.com/watch?v=7TqhmX92P6U)]
 
@@ -28,13 +28,13 @@ It is widely applied in portfolio management, investment planning, risk analysis
 
 Running the simulation repeatedly provides standard deviation and variance metrics, ensuring that the more you sample, the more accurate your future estimation becomes
 
-### The 3 Core Steps to Run a big 2 cards game Monte Carlos Simulation
+### The 3 Core Steps to Run a Big 2 cards game Monte Carlo Simulation
 
-1. ***Deterministic Rules:*** Program the actual game engine with rules eforehand.
-2. ***Random Inputs:*** The computer generates random values of the 13 cards and and assign to each players.
+1. ***Deterministic Rules:*** Program the actual game engine with rules beforehand.
+2. ***Random Inputs:*** The computer generates random values of the 13 cards and assign to each players.
 3. ***Emergent Probability:*** By running this mock game thousands or millions of times, the frequency of wins, losses, or remaining cards reveals the true probability distribution.
 
-## Different between Monte Carlos Tree Search (MCTS) and Monte Carlos Simulation (MCS)
+## Different between Monte Carlo Tree Search (MCTS) and Monte Carlo Simulation (MCS)
 
 The fundamental difference is that Monte Carlo Simulation (MCS) is a statistical tool used to calculate static probabilities and risk, while Monte Carlo Tree Search (MCTS) is an AI search algorithm designed to make optimal sequential choices.
 
@@ -63,7 +63,7 @@ Instead of trying to solve the problem with an impossible, single calculation, t
 
 ## Reference
 - [1] [Big 2 mathematical formula calculation](https://github.com/BobSwagg13/Application-of-Combinatorics-in-Big-Two/blob/main/docs/Application%20of%20Combinatorics%20in%20Big%20Two.pdf)
-- [2] [What is Monte Carlos Simulation](https://www.youtube.com/watch?v=7TqhmX92P6U)
+- [2] [What is Monte Carlo Simulation](https://www.youtube.com/watch?v=7TqhmX92P6U)
 - [3] [Monte Carlo Tree Search (MCTS)](https://www.youtube.com/watch?v=2Hv4b0vC7YY)
-- [4] [Monte Carlos Statstics skills](https://www.youtube.com/watch?v=r7cn3WS5x9c)
+- [4] [Monte Carlo Statistics skills](https://www.youtube.com/watch?v=r7cn3WS5x9c)
 - [5] [Monte Carlo Simulation Explained Visually](https://www.youtube.com/watch?v=WjmNedsX1T0)

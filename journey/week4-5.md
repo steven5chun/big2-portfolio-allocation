@@ -28,7 +28,7 @@ Big 2 card combination type
 
 code reference: 
 - [game_rule.py](../code/monte-carlos-analysis/game_rule.py)
-- [patition_finder.py](../code/monte-carlos-analysis/partition_finder.py)
+- [partition_finder.py](../code/monte-carlos-analysis/partition_finder.py)
 
 ## The Design of a Monte Carlo Simulation for Big 2 
 
@@ -163,7 +163,7 @@ Running 3,000 iterations per partition (5 partitions × 3,000 = 15,000 total gam
 
 Four key pieces of evidence prove the Monte Carlo method works:
 
-**1. Convergence stabilizes** — The win rate graphs show lines that start noisy at 100 iterations but flatten out by 1500-2000 iterations. For example, the #1 partition's win reate oscillates between 45% and 53% in the first 1000 iterations, then stabilizes at ~52.6% by 1500+ iterations. This proves the simulation results are statistically reliable - running more simulations doesn't change the ranking, it only reduce noise. 
+**1. Convergence stabilizes** — The win rate graphs show lines that start noisy at 100 iterations but flatten out by 1500-2000 iterations. For example, the #1 partition's win rate oscillates between 45% and 53% in the first 1000 iterations, then stabilizes at ~52.6% by 1500+ iterations. This proves the simulation results are statistically reliable - running more simulations doesn't change the ranking, it only reduces noise. 
 ![](../images/convergence_winrate.png)
 
 **2. Avg cards left validates win rate** — The top partition leaves only 1.98 cards on average, while the worst leaves 3.27. This dual metric agreement proves the Monte Carlo method is measuring real strategic advantage, not just variance in random opponent hands. A strategy that wins more often also empties its hand more efficiently.

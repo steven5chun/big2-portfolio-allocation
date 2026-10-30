@@ -24,10 +24,10 @@ python3 --version
 - Create virtual environment and Write Simple Python code
 - Different Python structure: function, class, Loop etc..
 - Object Oriented Programming (OOP) in Python. [[2](https://www.w3schools.com/python/python_oop.asp)]
-- Python libaray: NumPy [[3](https://www.w3schools.com/python/numpy/numpy_intro.asp)], Pandas [[4](https://www.w3schools.com/python/pandas/default.asp)] and matpoltlib [[5](https://www.w3schools.com/python/matplotlib_getting_started.asp)]
-- Based on what we learn on pyhton, Study Big2 Monte Carlos Python code to find out possibility of different combination of big 2 cards [[6](https://github.com/BobSwagg13/Application-of-Combinatorics-in-Big-Two/tree/main/src)]
+- Python libaray: NumPy [[3](https://www.w3schools.com/python/numpy/numpy_intro.asp)], Pandas [[4](https://www.w3schools.com/python/pandas/default.asp)] and matplotlib [[5](https://www.w3schools.com/python/matplotlib_getting_started.asp)]
+- Based on what we learn on python, Study Big2 Monte Carlo Python code to find out possibility of different combination of Big 2 cards [[6](https://github.com/BobSwagg13/Application-of-Combinatorics-in-Big-Two/tree/main/src)]
 
-## big 2 card representation by python code
+## Big 2 card representation by python code
 
 Cards are represented as tuples (value, suit):
 
@@ -56,7 +56,7 @@ card: ('3', 'd') = 3 of Diamonds, ('a', 's') = Ace of Spades, ('2', 'h') = 2 of 
 
 A full deck is 52 cards: 13 values × 4 suits, stored as a list of tuples.
 
-## big 2 card hand probabilities by python code
+## Big 2 card hand probabilities by python code
 This is a Monte Carlo simulation for estimating poker hand probabilities in a 13-card hand (used in Big 2).
 It runs 1,000,000 iterations, dealing random 13-card hands and checking for the presence of
 - Pair — Two cards of the same rank (e.g., 7♥ 7♠)
@@ -79,4 +79,4 @@ This week covered Python installation, basic numerical calculations, and data vi
 - [3] [NumPy](https://www.w3schools.com/python/numpy/numpy_intro.asp)
 - [4] [Pandas](https://www.w3schools.com/python/pandas/default.asp)
 - [5] [Matplotlib](https://www.w3schools.com/python/matplotlib_getting_started.asp)
-- [6] [Big 2 Monte Carlos Python code](https://github.com/BobSwagg13/Application-of-Combinatorics-in-Big-Two/tree/main/src)
+- [6] [Big 2 Monte Carlo Python code](https://github.com/BobSwagg13/Application-of-Combinatorics-in-Big-Two/tree/main/src)

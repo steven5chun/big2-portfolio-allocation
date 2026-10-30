@@ -28,7 +28,7 @@ To get the best results, always prioritize three core habits:
 
 - ***Provide reference code:*** Feed the AI high-quality examples to establish clear coding standards, style guides, and patterns.
 
-- ***Review meticulously:*** Treat AI-generated code as a draft, strictly testing and auditing it for security, efficiency, and bugs.Ultimately, AI is a powerful accelerator, but your strategic oversight remains the true engine of development.
+- ***Review meticulously:*** Treat AI-generated code as a draft, strictly testing and auditing it for security, efficiency, and bugs. Ultimately, AI is a powerful accelerator, but your strategic oversight remains the true engine of development.
 
 
  ## Reference
