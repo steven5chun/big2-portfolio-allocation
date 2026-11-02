@@ -32,14 +32,14 @@ Each metric answers a different question. Use them together for optimal strategy
 | 0 – 0.5 | Marginal | Only play if no better option exists |
 | < 0 | Losing | Avoid — negative return per unit of risk |
 
-### Example from Simulation Results
+### Example from Simulation Results (300 simulations, fixed seed)
 
 | Rank | Partition | EV | VaR(95%) | Sharpe | Interpretation |
 |------|-----------|------|----------|--------|----------------|
-| 1 | `[5c,5s] + [8d,9h,10c,jd,qh] + 6 singles` | +10.16 | -14.00 | **+1.13** | **Best overall** — high return, excellent Sharpe despite moderate tail risk |
-| 2 | `[8d,9h,10c,jd,qh] + 8 singles` | +6.43 | **-6.00** | +0.78 | **Safest** — lowest downside, good for conservative play |
-| 3 | `[5c,5s] + [9h,10c,jd,qh,ks] + 6 singles` | +3.95 | -14.00 | +0.34 | **Marginal** — barely beats risk, consider alternatives |
-| 4 | `13 singles` | +1.05 | -12.00 | +0.12 | **Barely profitable** — essentially breakeven |
+| 1 | `[8d,9h,10c,jd,qh] + 8 singles` | +7.01 | **-4.00** | **+0.88** | **Best risk-adjusted** — lowest downside, excellent Sharpe |
+| 2 | `[5c,5s] + [8d,9h,10c,jd,qh] + 6 singles` | **+8.57** | -16.00 | +0.84 | **Highest EV** — more return but 4× worse VaR than #1 |
+| 3 | `[5c,5s] + [9h,10c,jd,qh,ks] + 6 singles` | +5.32 | -14.00 | +0.50 | **Good** — solid EV with moderate risk |
+| 4 | `13 singles` | +0.77 | -12.00 | +0.08 | **Barely profitable** — essentially breakeven |
 
 ### VaR Interpretation
 
@@ -57,12 +57,13 @@ Each metric answers a different question. Use them together for optimal strategy
 ## How It Works
 
 1. **Partition Enumeration** — Finds every valid way to group the 13-card hand into legal Big 2 plays (e.g., pairs, straights, singles)
-2. **Simulation Loop** — For each partition:
+2. **Simulation Loop** — For each partition (66 total):
    - Deals 8 random cards to 3 opponents
-   - Runs `TOTAL_SIMS` full games with all players using SmartAI
+   - Runs 300 full games with all players using SmartAI
    - Records each game's point outcome (Pi)
-3. **Ranking** — Sorts partitions by EV or Sharpe Ratio (descending)
-4. **Visualization** — Generates convergence curves, scatter plots, histograms, and bar charts
+3. **Reproducibility** — Fixed random seed (`random.seed(42)`) ensures identical results across runs
+4. **Ranking** — Sorts partitions by EV or Sharpe Ratio (descending)
+5. **Visualization** — Generates convergence curves, scatter plots, histograms, bar charts, and Efficient Frontier
 
 ## Output
 
@@ -77,12 +78,24 @@ Each metric answers a different question. Use them together for optimal strategy
 
 - **Console**: Ranked summary table with EV, Std Dev, VaR(95%), and Sharpe Ratio
 - **Graphs**:
-  - `risk_return_scatter.png` — Risk (Std Dev) vs Return (EV) scatter plot, bubble size = Sharpe Ratio
+  - `risk_return_scatter.png` — Risk (Std Dev) vs Return (EV) scatter plot with Efficient Frontier overlay (green dashed line). Efficient partitions shown in green, inefficient in gray.
   ![](../images/risk_return_scatter.png)
+  - `efficient_frontier.png` — Clean view showing only the optimal partitions on the frontier curve, labeled with Sharpe Ratio.
+  ![](../images/efficient_frontier.png)
   - `risk_histogram.png` — Return distribution histogram for the top Sharpe partition with VaR marker
   ![](../images/risk_histogram.png)
   - `sharpe_bar_chart.png` — Sharpe Ratio ranking bar chart for top 20 partitions
   ![](../images/sharpe_bar_chart.png)
+
+### Efficient Frontier
+
+The **Efficient Frontier** (from Modern Portfolio Theory) identifies the set of **optimal partitions** offering the best expected return for a given level of risk. A partition is on the frontier if no other partition provides:
+- Higher EV for the same or lower risk, OR
+- Lower risk for the same or higher EV
+
+Partitions **below the frontier** are **inefficient** — you can achieve higher returns without accepting additional risk.
+
+**Strategic Insight**: Choose partitions on the efficient frontier for optimal risk-adjusted returns. The frontier curve shows the maximum achievable EV at each risk level.
 
 
 ## Takeaway
@@ -95,12 +108,16 @@ Week 4 established that Expected Value determines profitability. Week 7 adds **r
 
 | Layer | Question | Example from Results |
 |-------|----------|---------------------|
-| **EV > 0** | Is this profitable? | All 4 partitions pass (EV +1.05 to +10.16) |
-| **VaR(95%)** | Can I survive the worst 5%? | Partition #2 (VaR -6) is 2.3× safer than #1 (VaR -14) |
-| **Sharpe Ratio** | Is the return worth the risk? | Partition #1 (Sharpe 1.13) beats #2 (Sharpe 0.78) |
+| **EV > 0** | Is this profitable? | 4 partitions pass (EV +0.77 to +8.57) |
+| **VaR(95%)** | Can I survive the worst 5%? | Partition #1 (VaR -4) is 4× safer than #2 (VaR -16) |
+| **Sharpe Ratio** | Is the return worth the risk? | Partition #1 (Sharpe 0.88) beats #2 (Sharpe 0.84) |
 
 ### Key Findings
 
-**VaR reveals what EV hides** — Partitions #1 and #3 have identical VaR (-14) but very different EVs (+10.16 vs +3.95). This means both have the same worst-case downside — #1's extra return comes entirely from bigger wins, not reduced losses. In finance terms: **positive skew** (same floor, higher ceiling).
+**VaR reveals what EV hides** — Partition #2 has higher EV (+8.57 vs +7.01) but 4× worse VaR (-16 vs -4). This means #2 wins bigger on average but has much worse downside risk. In finance terms: **higher return, higher tail risk**.
 
-Play the partition with the **highest Sharpe Ratio** that fits your risk tolerance. **Aggressive position sizing** → Partition #1 (maximize returns). **Defensive position sizing** → Partition #2 (survivability first). 
+**The Efficient Frontier shows the tradeoff** — Both partitions #1 and #2 are on the frontier, meaning neither is dominated. The choice depends on risk tolerance:
+- **Aggressive play** → Partition #2 `[5c,5s] + [8d,9h,10c,jd,qh] + 6 singles` (maximize EV at +8.57)
+- **Conservative play** → Partition #1 `[8d,9h,10c,jd,qh] + 8 singles` (minimize risk at VaR -4)
+
+**Reproducibility matters** — With fixed random seed, both scripts now produce identical EV values (e.g., +8.57 for partition #2), eliminating Monte Carlo variance between runs.

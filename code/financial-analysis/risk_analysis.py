@@ -20,7 +20,7 @@ import matplotlib.ticker as mticker
 
 PLAYER_HAND = [('3', 'd'), ('3', 'h'), ('5', 'c'), ('5', 's'), ('8', 'd'), ('9', 'h'), ('10', 'c'), ('j', 'd'), ('q', 'h'), ('k', 's'), ('a', 'd'), ('2', 'c'), ('2', 's')]
 OPP_CARDS = 8
-TOTAL_SIMS = 150
+TOTAL_SIMS = 300
 TOP_N = 10
 RESULTS_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -96,6 +96,18 @@ def calculate_risk_metrics(pi_values):
     }
 
 
+def find_efficient_frontier(all_risk_results):
+    sorted_results = sorted(all_risk_results, key=lambda x: x['metrics']['std_dev'])
+    frontier = []
+    max_ev = float('-inf')
+    for r in sorted_results:
+        ev = r['metrics']['ev']
+        if ev >= max_ev:
+            frontier.append(r)
+            max_ev = ev
+    return frontier
+
+
 def plot_risk_return_scatter(all_risk_results):
     fig, ax = plt.subplots(figsize=(14, 9))
 
@@ -108,32 +120,80 @@ def plot_risk_return_scatter(all_risk_results):
     ax.axvline(x=median_std, color='gray', linestyle=':', alpha=0.4)
     ax.axhline(y=0, color='black', linestyle='--', alpha=0.5, linewidth=1.2, label='Break-even (EV = 0)')
 
+    frontier = find_efficient_frontier(all_risk_results)
+    frontier_set = {id(r) for r in frontier}
+    frontier_stds = [r['metrics']['std_dev'] for r in frontier]
+    frontier_evs = [r['metrics']['ev'] for r in frontier]
+
     for i, r in enumerate(all_risk_results):
-        color = '#4CAF50' if r['metrics']['sharpe'] > 0 else '#E91E63'
-        size = max(30, min(400, abs(r['metrics']['sharpe']) * 80))
-        alpha = 0.9 if i < TOP_N else 0.4
-        zorder = 3 if i < TOP_N else 1
-
-        if i < TOP_N:
-            label = f'#{i+1} {partition_to_string(r["partition"])}'
-            if len(label) > 60:
-                label = label[:57] + '...'
-        else:
-            label = None
-
+        if id(r) in frontier_set:
+            continue
         ax.scatter(r['metrics']['std_dev'], r['metrics']['ev'],
-                   s=size, c=color, alpha=alpha, edgecolors='none',
-                   label=label, zorder=zorder)
+                   s=50, c='gray', alpha=0.4, edgecolors='none', zorder=1)
+
+    for i, r in enumerate(frontier):
+        label = f'#{i+1} {partition_to_string(r["partition"])}'
+        if len(label) > 60:
+            label = label[:57] + '...'
+        ax.scatter(r['metrics']['std_dev'], r['metrics']['ev'],
+                   s=200, c='#4CAF50', alpha=0.9, edgecolors='white',
+                   linewidth=1.5, label=label, zorder=3)
+
+    ax.plot(frontier_stds, frontier_evs, 'g--', linewidth=2,
+            label='Efficient Frontier', zorder=2)
 
     ax.set_xlabel('Standard Deviation (Risk)', fontsize=13, fontweight='bold')
     ax.set_ylabel('Expected Value (Return)', fontsize=13, fontweight='bold')
-    ax.set_title('Risk-Return Scatter Plot — Sharpe Ratio (Bubble Size)', fontsize=15, fontweight='bold')
+    ax.set_title('Risk-Return Scatter Plot — Efficient Frontier Overlay', fontsize=15, fontweight='bold')
     ax.grid(True, alpha=0.3)
     ax.legend(fontsize=8, loc='best', framealpha=0.9, scatterpoints=1)
     ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
 
     fig.tight_layout()
     output_path = os.path.join(RESULTS_DIR, 'risk_return_scatter.png')
+    fig.savefig(output_path, dpi=150)
+    plt.close(fig)
+    return output_path
+
+
+def plot_efficient_frontier(all_risk_results):
+    frontier = find_efficient_frontier(all_risk_results)
+
+    fig, ax = plt.subplots(figsize=(12, 8))
+
+    frontier_stds = [r['metrics']['std_dev'] for r in frontier]
+    frontier_evs = [r['metrics']['ev'] for r in frontier]
+
+    ax.plot(frontier_stds, frontier_evs, 'g--', linewidth=2,
+            label='Efficient Frontier', zorder=1)
+
+    for i, r in enumerate(frontier):
+        std = r['metrics']['std_dev']
+        ev = r['metrics']['ev']
+        sharpe = r['metrics']['sharpe']
+
+        ax.scatter(std, ev, s=150, c='#4CAF50', alpha=0.9,
+                   edgecolors='white', linewidth=1.5, zorder=2)
+
+        label = partition_to_string(r['partition'])
+        if len(label) > 40:
+            label = label[:37] + '...'
+        ax.annotate(f'#{i+1} {label}\nSharpe: {sharpe:+.2f}',
+                    xy=(std, ev),
+                    xytext=(10, 10),
+                    textcoords='offset points',
+                    fontsize=9,
+                    bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.8))
+
+    ax.set_xlabel('Standard Deviation (Risk)', fontsize=13, fontweight='bold')
+    ax.set_ylabel('Expected Value (Return)', fontsize=13, fontweight='bold')
+    ax.set_title('Efficient Frontier — Optimal Risk-Return Tradeoffs', fontsize=15, fontweight='bold')
+    ax.grid(True, alpha=0.3)
+    ax.legend(fontsize=11, loc='best')
+    ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
+
+    fig.tight_layout()
+    output_path = os.path.join(RESULTS_DIR, 'efficient_frontier.png')
     fig.savefig(output_path, dpi=150)
     plt.close(fig)
     return output_path
@@ -212,6 +272,8 @@ def plot_sharpe_bar_chart(all_risk_results):
 
 
 def main():
+    random.seed(42)
+    
     print('=' * 70)
     print('Financial Analysis - Risk Metrics (Variance, VaR, Sharpe)')
     print('=' * 70)
@@ -278,6 +340,9 @@ def main():
 
     p3 = plot_sharpe_bar_chart(all_risk_results)
     print(f'  Saved: {p3}')
+
+    p4 = plot_efficient_frontier(all_risk_results)
+    print(f'  Saved: {p4}')
 
     print()
     print('=' * 70)
