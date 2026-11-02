@@ -121,3 +121,10 @@ Week 4 established that Expected Value determines profitability. Week 7 adds **r
 - **Conservative play** → Partition #1 `[8d,9h,10c,jd,qh] + 8 singles` (minimize risk at VaR -4)
 
 **Reproducibility matters** — With fixed random seed, both scripts now produce identical EV values (e.g., +8.57 for partition #2), eliminating Monte Carlo variance between runs.
+
+## Reference
+
+- [1] [Explaination of efficient frontier](https://www.youtube.com/watch?v=vnAbsNN3SbA)
+- [2] [What is an Efficient Frontier](https://corporatefinanceinstitute.com/resources/capital_markets/efficient-frontier/)
+- [3] [Understanding the Efficient Frontier: Risk vs. Return ](https://www.youtube.com/watch?v=5gsafk5IAIw)
+
