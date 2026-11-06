@@ -1,4 +1,4 @@
-# Week 5 - Program Code and Results Phase
+# Week 5 - Monte Carlo Simulation Program Code and Results
 
 ## Program Structure Overview
 
