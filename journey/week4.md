@@ -144,8 +144,6 @@ The Monte carlos simuluation runs thousands of games to find which card grouping
 
 6. **Rank and visualize** — Sort groupings by final EV (best first), pick top 5, and create 4 graphs showing how results stabilize over time.
 
-## Takeaway
 
-Monte Carlo simulation works because it tests each card grouping against many different opponent hands. Instead of guessing which grouping is best, you play thousands of realistic games and let the data show you the winner.
 
-The graphs show that results become stable after enough games. The **Expected Value (EV) framework** is better than just looking at win rate because it accounts for risk. Instead of just asking "Do I win or lose?", EV tells us "How many points do I expect to win or lose on average?" This is similar to how investors evaluate portfolios—they don't just look at whether they win, but how much they win or lose on average.
+

@@ -410,7 +410,7 @@ The final ranking bar chart uses green bars for positive EV and red bars for neg
 
 ### Final Takeaway
 
-The Monte Carlo simulation finds the best card grouping strategies by playing thousands of realistic games. The graphs show consistent results, and the Expected Value framework gives us a measure that accounts for risk, not just win rates.
+Monte Carlo simulation works because it tests each card grouping against many different opponent hands. Instead of guessing which grouping is best, you play thousands of realistic games and let the data show you the winner.
 
-The key finding is that **Monte Carlo Simulation** can give us a clear ranking of strategies, and we can use it to find out the best combination to win the game.
+The graphs show that results become stable after enough games. The **Expected Value (EV) framework** is better than just looking at win rate because it accounts for risk. Instead of just asking "Do I win or lose?", EV tells us "How many points do I expect to win or lose on average?" This is similar to how investors evaluate portfolios—they don't just look at whether they win, but how much they win or lose on average.
 
