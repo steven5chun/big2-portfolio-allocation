@@ -1,10 +1,10 @@
-# Financial Analysis — Big 2 Monte Carlo Simulation
+# Week 7 - Financial Analysis Code
 
 ## Overview
 
-Monte Carlo simulation framework for evaluating Big 2 starting hand combinations and determining optimal card arrangement strategies that maximize Expected Value (EV) and risk-adjusted returns.
+This document explains the Python code used for financial analysis of Big 2 card combinations. The analysis framework evaluates different card combination strategies using Monte Carlo simulation and calculates risk-adjusted performance metrics.
 
-### What is Expected Value (EV)?
+## Expected Value (EV)
 
 EV measures the probability-weighted average of points won or lost per hand:
 
@@ -13,118 +13,192 @@ EV measures the probability-weighted average of points won or lost per hand:
 
 **Positive EV** means the strategy is profitable long-term. **Negative EV** means it loses points on average.
 
-## Interpreting Combined Metrics
-
-Each metric answers a different question. Use them together for optimal strategy selection:
-
-| Metric | Answers | Decision Rule |
-|--------|---------|---------------|
-| **EV** | "Am I profitable long-term?" | Positive = worth playing |
-| **VaR(95%)** | "How bad can it get?" | Closer to 0 = lower downside risk |
-| **Sharpe** | "Is the return worth the risk?" | Higher = better risk-adjusted return |
-
-### Sharpe Ratio Benchmarks
-
-| Sharpe | Rating | Action |
-|--------|--------|--------|
-| > 1.0 | Excellent | Play confidently — high return, efficient risk |
-| 0.5 – 1.0 | Good | Play with proper bankroll management |
-| 0 – 0.5 | Marginal | Only play if no better option exists |
-| < 0 | Losing | Avoid — negative return per unit of risk |
-
-### Example from Simulation Results (300 simulations, fixed seed)
-
-| Rank | Partition | EV | VaR(95%) | Sharpe | Interpretation |
-|------|-----------|------|----------|--------|----------------|
-| 1 | `[8d,9h,10c,jd,qh] + 8 singles` | +7.01 | **-4.00** | **+0.88** | **Best risk-adjusted** — lowest downside, excellent Sharpe |
-| 2 | `[5c,5s] + [8d,9h,10c,jd,qh] + 6 singles` | **+8.57** | -16.00 | +0.84 | **Highest EV** — more return but 4× worse VaR than #1 |
-| 3 | `[5c,5s] + [9h,10c,jd,qh,ks] + 6 singles` | +5.32 | -14.00 | +0.50 | **Good** — solid EV with moderate risk |
-| 4 | `13 singles` | +0.77 | -12.00 | +0.08 | **Barely profitable** — essentially breakeven |
-
-### VaR Interpretation
-
-- **VaR(95%) = -6** → In 95% of games, your outcome is -6 or better (win or lose ≤6 points). Only 5% of games lose more than 6 points.
-- **VaR(95%) = -24** → In 95% of games, your outcome is -24 or better. But in the worst 5% of games, you lose more than 24 points (catastrophic tail risk).
-- **VaR close to 0** → The 5th percentile loss is small — even in bad scenarios, your bankroll is relatively safe.
-
-### Decision Framework
-
-1. **Filter by EV > 0** — eliminate all losing strategies
-2. **Check VaR(95%)** — can your bankroll survive worst-case 5% scenarios?
-3. **Pick highest Sharpe** — among viable options, maximize risk-adjusted return
-
-
 ## How It Works
 
 1. **Partition Enumeration** — Finds every valid way to group the 13-card hand into legal Big 2 plays (e.g., pairs, straights, singles)
-2. **Simulation Loop** — For each partition (66 total):
-   - Deals 8 random cards to 3 opponents
+2. **Simulation Loop** — For each combination:
+   - Deals 13 random cards to 3 opponents (standard Big 2 rules)
    - Runs 300 full games with all players using SmartAI
    - Records each game's point outcome (Pi)
 3. **Reproducibility** — Fixed random seed (`random.seed(42)`) ensures identical results across runs
 4. **Ranking** — Sorts partitions by EV or Sharpe Ratio (descending)
 5. **Visualization** — Generates convergence curves, scatter plots, histograms, bar charts, and Efficient Frontier
 
-## Output
+## Code: [ev_convergence.py](../code/financial-analysis/ev_convergence.py)
 
-### EV Convergence [ev_convergence.py](../code/financial-analysis/ev_convergence.py)
+This script tracks how Expected Value stabilizes as more simulations run.
 
-- **Console**: Ranked summary table with Win Rate, Avg Cards Left, and EV
-- **Graph**: `ev_convergence_all.png` — EV convergence lines for all partitions with top 10 highlighted
-![](../images/ev_convergence_all.png)
+**Configuration:**
+```python
+PLAYER_HAND = [('3', 'd'), ('3', 'h'), ('5', 'c'), ('5', 's'), ('8', 'd'), ('9', 'h'), 
+               ('10', 'c'), ('j', 'd'), ('q', 'h'), ('k', 's'), ('a', 'd'), ('2', 'c'), ('2', 's')]
+OPP_CARDS = 13
+TOTAL_SIMS = 300
+```
 
+**Test Hand:** The simulation evaluates how to optimally arrange this 13-card hand:
+- **Hand:** `[3d, 3h, 5c, 5s, 8d, 9h, 10c, jd, qh, ks, ad, 2c, 2s]`
 
-### Risk Analysis [risk_analysis.py](../code/financial-analysis/risk_analysis.py)
+**Core Function:**
+```python
+def run_simulations(player_hand, partition, total_sims, opp_cards):
+    ev_values = []
+    total_ev = 0
+    wins = 0
+    total_cards_left = 0
 
-- **Console**: Ranked summary table with EV, Std Dev, VaR(95%), and Sharpe Ratio
-- **Graphs**:
-  - `risk_return_scatter.png` — Risk (Std Dev) vs Return (EV) scatter plot with Efficient Frontier overlay (green dashed line). Efficient partitions shown in green, inefficient in gray.
-  ![](../images/risk_return_scatter.png)
-  - `efficient_frontier.png` — Clean view showing only the optimal partitions on the frontier curve, labeled with Sharpe Ratio.
-  ![](../images/efficient_frontier.png)
-  - `risk_histogram.png` — Return distribution histogram for the top Sharpe partition with VaR marker
-  ![](../images/risk_histogram.png)
-  - `sharpe_bar_chart.png` — Sharpe Ratio ranking bar chart for top 20 partitions
-  ![](../images/sharpe_bar_chart.png)
+    for sim in range(1, total_sims + 1):
+        # Deal random cards to opponents
+        deck = Deck()
+        all_cards = [c for c in deck.cards if c not in player_hand]
+        random.shuffle(all_cards)
+        
+        opponent_hands = []
+        idx = 0
+        for _ in range(3):
+            opponent_hands.append(all_cards[idx:idx + opp_cards])
+            idx += opp_cards
 
-### Efficient Frontier
+        # Generate random partitions for opponents
+        ai_partitions = []
+        for oh in opponent_hands:
+            opp_partitions = find_all_partitions(oh, max_partitions=50)
+            ai_partitions.append(random.choice(opp_partitions))
 
-The **Efficient Frontier** (from Modern Portfolio Theory) identifies the set of **optimal partitions** offering the best expected return for a given level of risk. A partition is on the frontier if no other partition provides:
-- Higher EV for the same or lower risk, OR
-- Lower risk for the same or higher EV
+        all_partitions = [partition] + ai_partitions
 
-Partitions **below the frontier** are **inefficient** — you can achieve higher returns without accepting additional risk.
+        # Run game
+        game = Big2Game([player_hand] + opponent_hands, partition_orders=all_partitions)
+        ai_players = [SmartAI() for _ in range(4)]
+        winner, cards_left = game.simulate_with_partition(all_partitions, ai_players)
 
-**Strategic Insight**: Choose partitions on the efficient frontier for optimal risk-adjusted returns. The frontier curve shows the maximum achievable EV at each risk level.
+        # Calculate points
+        if winner == 0:
+            wins += 1
+            pi = sum(cards_left[1:])  # Sum of opponents' remaining cards
+        else:
+            pi = -2 * cards_left[0]  # Double penalty on your remaining cards
 
+        total_ev += pi
+        total_cards_left += cards_left[0]
+        ev_values.append(total_ev / sim)  # Cumulative EV at each step
 
-## Takeaway
+    return ev_values, wins / total_sims, total_cards_left / total_sims, total_ev / total_sims
+```
 
-### EV Tells You What You Earn. Sharpe Tells You What It Costs.
+**Visualization:**
+```python
+def plot_ev_convergence(all_results, total_sims, colors):
+    # Plots EV convergence lines for all 66 partitions
+    # Highlights top 10 partitions with thicker lines and labels
+    # Shows break-even line at EV = 0
+    # Saves to ev_convergence_all.png
+```
 
-Week 4 established that Expected Value determines profitability. Week 7 adds **risk-adjusted return analysis** using Sharpe Ratio and VaR — the same framework portfolio managers use to evaluate investments.
+**Output:**
+- Console: Ranked summary table with Win Rate, Avg Cards Left, and EV
+- Graph: `ev_convergence_all.png` — EV convergence lines for all partitions
 
-### Three-Layer Decision Framework
+## Code: [risk_analysis.py](../code/financial-analysis/risk_analysis.py)
 
-| Layer | Question | Example from Results |
-|-------|----------|---------------------|
-| **EV > 0** | Is this profitable? | 4 partitions pass (EV +0.77 to +8.57) |
-| **VaR(95%)** | Can I survive the worst 5%? | Partition #1 (VaR -4) is 4× safer than #2 (VaR -16) |
-| **Sharpe Ratio** | Is the return worth the risk? | Partition #1 (Sharpe 0.88) beats #2 (Sharpe 0.84) |
+This script calculates risk metrics (variance, VaR, Sharpe ratio) and identifies the Efficient Frontier.
 
-### Key Findings
+**Core Function:**
+```python
+def run_risk_simulation(player_hand, partition, total_sims, opp_cards):
+    pi_values = []  # Individual game outcomes
+    wins = 0
+    total_cards_left = 0
 
-**VaR reveals what EV hides** — Partition #2 has higher EV (+8.57 vs +7.01) but 4× worse VaR (-16 vs -4). This means #2 wins bigger on average but has much worse downside risk. In finance terms: **higher return, higher tail risk**.
+    for sim in range(1, total_sims + 1):
+        # ... same game setup as ev_convergence.py ...
+        
+        if winner == 0:
+            wins += 1
+            pi = sum(cards_left[1:])
+        else:
+            pi = -2 * cards_left[0]
 
-**The Efficient Frontier shows the tradeoff** — Both partitions #1 and #2 are on the frontier, meaning neither is dominated. The choice depends on risk tolerance:
-- **Aggressive play** → Partition #2 `[5c,5s] + [8d,9h,10c,jd,qh] + 6 singles` (maximize EV at +8.57)
-- **Conservative play** → Partition #1 `[8d,9h,10c,jd,qh] + 8 singles` (minimize risk at VaR -4)
+        pi_values.append(pi)  # Store each game's outcome
+        total_cards_left += cards_left[0]
 
-**Reproducibility matters** — With fixed random seed, both scripts now produce identical EV values (e.g., +8.57 for partition #2), eliminating Monte Carlo variance between runs.
+    return pi_values, wins / total_sims, total_cards_left / total_sims
+```
 
-## Reference
+**Risk Metrics Calculation:**
+```python
+def calculate_risk_metrics(pi_values):
+    arr = np.array(pi_values)
+    mean_ev = np.mean(arr)           # Expected Value
+    variance = np.var(arr)           # Variance
+    std_dev = np.std(arr)            # Standard Deviation (risk)
+    var_95 = np.percentile(arr, 5)   # Value at Risk (95% confidence)
+    sharpe = mean_ev / std_dev if std_dev > 0 else 0.0  # Sharpe Ratio
 
-- [1] [Explaination of efficient frontier](https://www.youtube.com/watch?v=vnAbsNN3SbA)
-- [2] [What is an Efficient Frontier](https://corporatefinanceinstitute.com/resources/capital_markets/efficient-frontier/)
-- [3] [Understanding the Efficient Frontier: Risk vs. Return ](https://www.youtube.com/watch?v=5gsafk5IAIw)
+    return {
+        'ev': mean_ev,
+        'variance': variance,
+        'std_dev': std_dev,
+        'var_95': var_95,
+        'sharpe': sharpe,
+    }
+```
 
+**Efficient Frontier:**
+```python
+def find_efficient_frontier(all_risk_results):
+    sorted_results = sorted(all_risk_results, key=lambda x: x['metrics']['std_dev'])
+    frontier = []
+    max_ev = float('-inf')
+    for r in sorted_results:
+        ev = r['metrics']['ev']
+        if ev >= max_ev:
+            frontier.append(r)
+            max_ev = ev
+    return frontier
+```
+
+The Efficient Frontier identifies partitions that offer the best expected return for a given level of risk. A partition is on the frontier if no other partition provides higher EV for the same or lower risk.
+
+**Visualization Functions:**
+
+1. **plot_risk_return_scatter()** — Risk (Std Dev) vs Return (EV) scatter plot with Efficient Frontier overlay
+2. **plot_efficient_frontier()** — Clean view showing only optimal partitions on the frontier curve
+3. **plot_return_histogram()** — Return distribution histogram for top Sharpe partition with VaR marker
+4. **plot_sharpe_bar_chart()** — Sharpe Ratio ranking bar chart for top 20 partitions
+
+## Other Codes: Big 2 Game rule and engine
+Refer to [week5.md](./week5.md)
+
+## Document: [how-to-play.md](../code/financial-analysis/how-to-run.md)
+
+This document explains how to run the Monte Carlo simulations.
+
+**Prerequisites:**
+```bash
+pip install matplotlib
+```
+
+**Run the Analysis:**
+```bash
+python sim_play.py
+```
+
+**Configuration Options:**
+
+| Setting | What It Does | Example |
+|---------|-------------|---------|
+| `PLAYER_HAND` | Your 13-card hand to test | Change to any 13 cards |
+| `OPP_CARDS` | How many cards each AI opponent has | 13 (standard Big 2 rules) |
+| `ITERATIONS` | Milestones to track during simulation | Add/remove values as needed |
+| `TOP_N` | Number of best partitions to display and graph | 5 (default), increase to see more |
+| `MAX_PARTITIONS` | Cap on partitions to search (prevents slowdown) | 500 (default) |
+
+**Card Format:**
+Cards are tuples: `(value, suit)`
+- Values: `'3'`, `'4'`, ..., `'10'`, `'j'`, `'q'`, `'k'`, `'a'`, `'2'`
+- Suits: `'d'` (diamonds) < `'c'` (clubs) < `'h'` (hearts) < `'s'` (spades)
+
+Example: `('3', 'd')` = 3 of Diamonds, `('a', 's')` = Ace of Spades
+
+See [how-to-play.md](../code/monte-carlos-analysis/how-to-play.md) for complete documentation.

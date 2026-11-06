@@ -18,7 +18,7 @@ import matplotlib.ticker as mticker
 
 
 PLAYER_HAND = [('3', 'd'), ('3', 'h'), ('5', 'c'), ('5', 's'), ('8', 'd'), ('9', 'h'), ('10', 'c'), ('j', 'd'), ('q', 'h'), ('k', 's'), ('a', 'd'), ('2', 'c'), ('2', 's')]
-OPP_CARDS = 8
+OPP_CARDS = 13
 TOTAL_SIMS = 300
 TOP_N_LEGEND = 10
 RESULTS_DIR = os.path.dirname(os.path.abspath(__file__))

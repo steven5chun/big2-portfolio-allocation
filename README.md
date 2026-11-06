@@ -47,17 +47,17 @@ Finally, I realized that static formulas are inadequate for addressing these com
 
     Used financial theory to select the optimal combination. The Big 2 card combination that maximizes return may not be the optimal choice. We need to consider risk tolerance. Analogous to efficient frontier theory, we choose the combination with an acceptable risk level. 
    
-   Based on simulation results from [week7.md](./journey/week7.md), we selected combinations with higher return and acceptable risk. ![](./images/efficient_frontier.png)
+   Based on simulation results from [week8.md](./journey/week8.md), we tested the hand `[3d, 3h, 5c, 5s, 8d, 9h, 10c, jd, qh, ks, ad, 2c, 2s]` and selected combinations with higher return and acceptable risk. ![](./images/efficient_frontier.png)
 
    
 | Rank | Partition | EV | VaR(95%) | Sharpe | Interpretation |
 |------|-----------|------|----------|--------|----------------|
-| 1 | `[8d,9h,10c,jd,qh] + 8 singles` | +7.01 | **-4.00** | **+0.88** | **Best risk-adjusted** — lowest downside, excellent Sharpe |
-| 2 | `[5c,5s] + [8d,9h,10c,jd,qh] + 6 singles` | **+8.57** | -16.00 | +0.84 | **Highest EV** — more return but 4× worse VaR than #1 |
-| 3 | `[5c,5s] + [9h,10c,jd,qh,ks] + 6 singles` | +5.32 | -14.00 | +0.50 | **Good** — solid EV with moderate risk |
-| 4 | `13 singles` | +0.77 | -12.00 | +0.08 | **Barely profitable** — essentially breakeven |
+| 1 | `[5c,5s] + [8d,9h,10c,jd,qh] + 6 singles` | **+11.84** | -12.00 | **+0.86** | **Best risk-adjusted** — highest EV with excellent Sharpe |
+| 2 | `[8d,9h,10c,jd,qh] + 8 singles` | +8.37 | **-6.00** | +0.63 | **Lowest risk** — best VaR, conservative choice |
+| 3 | `[5c,5s] + [9h,10c,jd,qh,ks] + 6 singles` | +7.89 | -14.00 | +0.53 | **Good** — solid EV with moderate risk |
+| 4 | `13 singles` | +6.29 | -14.00 | +0.40 | **Profitable** — all singles strategy works |
    
-   Card combination `[8d,9h,10c,jd,qh] + 8 singles` is selected although it does not produce the maximum Expected Value (i.e., it only produces 7.01 compared with the highest 8.57), but it has the highest Sharpe ratio and the lowest VaR(95%) (-4). 
+Card combination `[5c,5s] + [8d,9h,10c,jd,qh] + 6 singles` is selected as it produces the highest Expected Value (+11.84) and the highest Sharpe ratio (+0.86). For risk-averse players, `[8d,9h,10c,jd,qh] + 8 singles` offers the lowest downside risk (VaR -6) with solid returns (+8.37).
 
 ## Learning Journey
 
@@ -79,12 +79,14 @@ Finally, I realized that static formulas are inadequate for addressing these com
 - **Rapid Prototyping Execution:** Leveraged generative AI tooling to rapidly build and debug simple, reactive game-engine models.
 
 
-[Week 4-5](./journey/week4-5.md)
-- **Combinatorial Card Partitioning:** Algorithmic generation of all valid card combinations and potential hand partitions from a fixed starting hand.
-- **Stochastic Game Engine Architecture:** Designed and implemented a discrete state-machine engine governing Big 2 rules, structural logic, and transition states.
-- **Expected Value (EV) Modeling:** Formal mathematical modeling of the game’s utility function to calculate probability-weighted point returns rather than binary win rates.
-- **Monte Carlo Simulation Optimization:** Development of an iterative stochastic loop framework to isolate the mathematically optimal card configuration across thousands of independent trials.
-- **Quantitative Results Analysis:** Statistical evaluation of the simulation data to map out the Efficient Frontier and evaluate strategy performance under uncertainty.
+[Week 4](./journey/week4.md) - Design of Monte Carlo Simulation for Big 2
+- **Game Mechanics & Card Combinations:** Defined 9 partition types with value/suit hierarchy, established simulation assumptions (13-card hands, homogeneous SmartAI players), and designed core game loop with 3d-first rule and round completion logic.
+- **Expected Value Framework:** Modeled EV as probability-weighted point returns to capture risk-adjusted strategy utility beyond binary win rates.
+- **Simulation Pipeline:** Structured 6-step workflow from partition enumeration through stochastic opponent generation to convergence analysis and visualization.
+
+[Week 5](./journey/week5.md) - Program Code and Results on Big 2 Monte Carlo Simulation
+- **Implementation:** Built 5-module Python codebase (game rules, partition finder, game engine, AI players, simulation runner) and executed 15,000 games across 5 partition strategies.
+- **Convergence & Findings:** Demonstrated statistical reliability at 1,500-2,000 iterations
 
 
 [Week 6](./journey/week6.md)
@@ -94,8 +96,12 @@ Finally, I realized that static formulas are inadequate for addressing these com
 - **Asset-to-Card Allocation Mapping:** Formulated a structural cross-disciplinary mapping system to translate financial metrics directly into Big 2 card distribution parameters.
 
 [Week 7](./journey/week7.md)
-- **Application of Financial Theory:** Applied Modern Portfolio Theory and Quantitative Methods to the Big 2 card game.
-- **Simulation Result Analysis:** Analyzed Big 2 card combination simulations through a financial lens.
+- **Financial Analysis Code:** Explained the Python code for EV convergence tracking and risk metrics calculation (variance, VaR, Sharpe ratio).
+- **SmartAI Strategy:** Documented the scoring-based AI engine that evaluates moves and picks optimal plays based on card value, grouping efficiency, and endgame awareness.
+
+[Week 8](./journey/week8.md)
+- **Risk-Adjusted Results:** Analyzed 66 card partitions using EV, VaR(95%), and Sharpe Ratio with 13-card simulation (standard Big 2 rules). Identified optimal strategies with grouping cards into straights as the most powerful approach.
+- **Efficient Frontier:** Applied Modern Portfolio Theory to find partitions offering the best risk-return tradeoffs. Top partition `[5c,5s] + [8d,9h,10c,jd,qh] + 6 singles` achieves +11.84 EV with +0.86 Sharpe ratio.
 
   
 
