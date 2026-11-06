@@ -121,7 +121,7 @@ The Monte carlos simuluation runs thousands of games to find which card grouping
 1. **Fixed hand input** — The player's hand stays the same in all simulations. Test hand: `[3d, 5h, 5c, 7s, ks, 8d, 8c, 2d]` (8 cards with a pair of 5s, a pair of 8s, and a 2).
 
 2. **Find all card groupings** — The program finds every valid way to group the hand into Big 2 plays. For this hand, the top 5 groupings are:
-   - `[5c,5h,8d,8c] + 4 singles` — play four-of-a-kind first, then singles
+   - `[5c,5h,8d,8c] + 4 singles` — play two pair first, then singles
    - `[5c,5h] + [8d,8c] + 4 singles` — play pairs separately, then singles
    - `[5c,5h] + 6 singles` — play one pair first, then singles
    - `[8d,8c] + 6 singles` — play the other pair first, then singles
