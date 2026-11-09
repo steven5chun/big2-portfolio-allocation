@@ -14,6 +14,7 @@ I have always been curious about how to consistently win at Big 2 and whether th
 
 This project aims to discover the optimal strategy for various in-game situations while documenting my personal learning journey.
 
+
 ## Takeaway
 
 This project did not yield a 'perfect' or unbeatable card algorithm, because in systems dominated by human behavior, a perfect formula does not exist. The true value lies in mastering the methodology: applying financial theory to real-world problems through daily observation.
@@ -103,7 +104,8 @@ Card combination `[5c,5s] + [8d,9h,10c,jd,qh] + 6 singles` is selected as it pro
 - **Risk-Adjusted Results:** Analyzed 66 card partitions using EV, VaR(95%), and Sharpe Ratio with 13-card simulation (standard Big 2 rules). Identified optimal strategies with grouping cards into straights as the most powerful approach.
 - **Efficient Frontier:** Applied Modern Portfolio Theory to find partitions offering the best risk-return tradeoffs. Top partition `[5c,5s] + [8d,9h,10c,jd,qh] + 6 singles` achieves +11.84 EV with +0.86 Sharpe ratio.
 
-  
+## InfoGraphic: How Big 2 Portfolio Allocation works
+![](./images/Big2-Monte-Carlos-explanation.jpeg)  
 
 ## References
 
